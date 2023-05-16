@@ -1,0 +1,435 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+    padding: 15px;
+    margin: 0;
+  }
+  .label:hover input[type="checkbox"] {
+    border-color: lightblue;
+  }
+
+      td.top-strip {
+      font-size: 12px;
+  }
+
+
+  .required-service select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .top-strip b {
+      color: #482e92;
+      font-size: 22px;
+  }
+  td.fedex-logo img {
+      padding: 11px;
+      width: 300px;
+      position: relative;
+      display: block;
+      top: 1px;
+  }
+  .date-div b {
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 700;
+  }
+  .date-div {
+      vertical-align: top;
+      border: 1px solid #452b93;
+  }
+  .date-div.second-date {
+      width: 36%;
+  }
+  .required-service {
+      vertical-align: top;
+      border: 5px solid #452b93;
+  }
+  .required-service b {
+      font-size: 18px;
+      font-weight: 700;
+      color: #452b93;
+  }
+  .required-service label {
+      font-size: 20px;
+      font-weight: 700;
+      color: #452b93;
+  }
+  .blue-table-color {
+      width: 100%;
+      background-color: #452b93;
+  }
+  .table-half-50{
+      width:50%;color: #fff; 
+      font-size: 17px;
+      font-weight: bold;
+  }
+  .width-30 {
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 30%;
+  }
+  .width-20{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 20%;
+  }
+  .width-20 span, .width-30 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .width-8{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 8%;
+  }
+  .width-12{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 12%;
+  }
+  .width-12 span, .width-8 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-50{
+      vertical-align: top;border: 1px solid #452b93;width: 50%;
+  }
+  .row-half-50 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-25{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 25%;
+  }
+  .row-half-14{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 14%;
+  }
+  .row-half-11{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 11%;
+  }
+  .row-half-25 span, .row-half-14 span, .row-half-11 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-50 label {
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-100{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 100%;
+  }
+  .row-half-100 span {
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .blue-strip-row-100{
+      width: 100%;
+      background-color: #452b93;
+  }
+  .blue-strip-text{
+      width:100%;
+      color: #fff;
+      font-size: 17px;
+      font-weight: bold;
+  }
+  .row-half-38{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 38%;
+  }
+  .row-half-22{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 32%;
+  }
+  .row-half-40{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 32%;
+  }
+  .row-half-40 span, .row-half-22 span, .row-half-38 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-41{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 41%;
+  }
+  .row-half-9{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 9%;
+  }
+  .row-half-13{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 13%;
+  }
+  .row-half-12{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 12%;
+  }
+  .row-half-16{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 16%;
+  }
+  .row-half-16 span, .row-half-12 span, .row-half-13 span, .row-half-9 span, .row-half-41 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .freight-charge-left{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 25%;
+      color: #452b93;
+  }
+  .freight-charge-middle{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 25%;
+      border-right: 0;
+  }
+  .freight-charge-right{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 50%;
+      border-left: 0px;
+  }
+  .freight-charge-left label{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 700;
+  }
+  .left-middle-text{
+      float:left;
+      height: 100%;
+      display: inline-block;
+      margin-top: 16px;
+  }
+  .right-middle-text{
+      float: left;
+      text-align: center;
+      padding-left: 7px;
+  }
+  .left-middle-text label{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 700;
+  }
+  .right-middle-text b{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 700;
+  }
+  .freight-charge-right span {
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .freight-charge-right b {
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 700;
+  }
+  .freight-charge-right label {
+      display: inline-block;
+      font-size: 14px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-37{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 37%;
+  }
+  .row-half-7{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 7%;
+  }
+  .row-half-17{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 17%;
+  }
+  .row-half-37 span, .row-half-7 span, .row-half-17 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-8{
+      vertical-align: top;
+      border: 1px solid #ffffff;
+      width: 8%;
+      border-top: 0;
+  }
+  .row-half-3{
+      vertical-align: top;
+      border: 1px solid #ffffff;
+      width: 3%;
+      border-top: 0;
+  }
+  .row-half-4{
+      vertical-align: top;
+      border: 1px solid #ffffff;
+      width: 4%;
+      border-top: 0;
+  }
+  .row-half-46{
+      vertical-align: top;
+      border: 1px solid #ffffff;
+      width: 46%;
+      border-top: 0;
+  }
+  .row-half-10{
+      vertical-align: top;
+      border: 1px solid #ffffff;
+      width: 10%;
+      border-top: 0;
+  }
+  .row-half-10 span, .row-half-46 span, .row-half-3 span, .row-half-8 span, .row-half-4 span, .row-half-12 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 400;
+  }
+  .row-half-12.white-border{
+      border: 1px solid #ffffff;
+      border-top: 0;
+  }
+  .row-half-4.orange-4{
+      text-align: center;
+      background-color: #f47921;
+  }
+  .same-input{
+      border-top: 3px solid #fff !important;
+      width: calc(100% - 0px);
+      border: 0px;
+      background-color: #f1f4ff;
+      padding: 6px 0px;
+  }
+  .blue-border {
+      border: 1px solid #452b93;
+      border-top: 0;
+  }
+  .row-half-12.without-input {
+      vertical-align: top;
+      border: 1px solid #ffffff;
+      width: 10%;
+      border-top: 0;
+  }
+  .row-half-20{
+      vertical-align: top;
+      border: 1px solid #452b93;
+      width: 20%;
+      border-top: 0;
+  }
+  .row-half-80{
+      vertical-align: top;
+      border: 1px solid #f47921;
+      width: 80%;
+      border-top: 0;
+      background-color: #f47921;
+  }
+  .row-half-20 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #452b93;
+      font-weight: 400;
+  }
+  .row-half-80 span{
+      display: inline-block;
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 700;
+  }
+  .row-half-50.font-size-14px span {
+      font-size: 14px;
+  }
+  select {
+    /* Set the width of the select element */
+    width: 100%;
+  
+    /* Set the font size and padding of the select element */
+    font-size: 16px;
+    padding: 8px;
+  
+    /* Set the border of the select element */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  
+    /* Set the background color and color of the select element */
+    background-color: #fff;
+    color: #333;
+  }
+  
+  select option {
+    /* Set the font size and padding of the option elements */
+    font-size: 16px;
+    padding: 8px;
+  
+    /* Set the background color and color of the option elements */
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .row-half-50 .blue-strip-text-blue {
+      display: inline-block;
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: 700;
+      background-color: #452b93;
+      width: 100%;
+      padding: 5px 0px;
+  }
+  .table-full{
+      width: 100%;
+  }  
+  .square {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #452b93;
+    display: inline-block;
+    margin-right: 3px;
+}
+.column-width {
+    width: 10%;
+  }
+  
