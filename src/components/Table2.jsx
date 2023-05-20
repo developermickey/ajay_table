@@ -20,10 +20,23 @@ const Table2 = () => {
   const [pickup, setPickup] = useState("");
   const [po, setPo] = useState("");
   const [carrier, setCarrier] = useState("");
-  const [isChecked1, setIsChecked1] = useState("");
-  const [isChecked2, setIsChecked2] = useState("");
-  const [isChecked3, setIsChecked3] = useState("");
+  const [isChecked, setIsChecked] = useState([]);
+  const [serviceType, setServiceType] = useState([]);
+  const [shipFrom, setShipFrom] = useState([]);
+  const [shipTo, setShipTo] = useState([]);
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const checked = e.target.checked;
+    console.log(value, checked);
+    if (checked) {
+      setIsChecked([
+        ...isChecked, value
+      ])
+    }else {
+      setIsChecked(isChecked.filter((e) => (e !== value)));
+    }
+  }
   const handleSubmit = async e => {
     e.preventDefault();
     console.log("Form submitted!");
@@ -39,9 +52,11 @@ const Table2 = () => {
       pickup: pickup,
       po: po,
       carrier: carrier,
-	  isChecked1: isChecked1,
-	  isChecked2: isChecked2,
-	  isChecked3: isChecked3,
+      isChecked: isChecked,
+      serviceType: serviceType,
+      shipFrom: shipFrom,
+      shipTo: shipTo,
+
     };
 
     if (order) {
@@ -59,9 +74,11 @@ const Table2 = () => {
       id: id,
       po: po,
       carrier: carrier,
-	  isChecked1: isChecked1,
-	  isChecked2: isChecked2,
-	  isChecked3: isChecked3,
+      isChecked: isChecked,
+      serviceType: serviceType,
+      shipFrom: shipFrom,
+      shipTo: shipTo,
+
     };
 
     try {
@@ -75,6 +92,8 @@ const Table2 = () => {
     } catch (error) {
       console.error("Error sending email:", error);
     }
+   
+   
   };
 
   // Rest of your code
@@ -210,22 +229,20 @@ const Table2 = () => {
               <br />
               <label>
                 <input
-                  checked={isChecked1}
-                  onChange={event => {
-					setIsChecked1(event.target.checked);
-                }}
+                name={isChecked}
+                  onChange={handleChange}
                   type="checkbox"
+                  value="Prepaid"
                 />
                 Prepaid
               </label>
               <br />
               <label>
                 <input 
+                name={isChecked}
 				type="checkbox" 
-				checked={isChecked2}
-                onChange={event => {
-					setIsChecked2(!isChecked2);
-                }}
+        onChange={handleChange}
+                value="3rd Party"
 				/>
                 3rd Party
               </label>
@@ -234,10 +251,8 @@ const Table2 = () => {
                 <input 
 				name="isChecked"
 				type="checkbox" 
-				checked={isChecked3}
-                onChange={event => {
-					setIsChecked3(!isChecked3);
-                }}
+        onChange={handleChange}
+                value="Collect"
 				/>
                 Collect
               </label>
@@ -257,17 +272,18 @@ const Table2 = () => {
                 <option value="A Duie Pyle">A Duie Pyle</option>
                 <option value="YRC">YRC</option>
                 <option value="ODFL">ODFL</option>
-                <option value="Custom">Custom</option>
               </select>
             </td>
             <td className="required-service">
               <b>Service Type: </b>
               <br />
-              <select style={{ marginTop: "15px" }}>
+              <select style={{ marginTop: "15px" }} value={serviceType}
+                onChange={event => {
+                  setServiceType(event.target.value);
+                }}>
                 <option value="">-- Select a delivery option --</option>
                 <option value="Economy Freight">Economy Freight</option>
                 <option value="Priority Freight">Priority Freight</option>
-                <option value="Custom text">Custom text</option>
               </select>
             </td>
           </tr>
@@ -287,17 +303,21 @@ const Table2 = () => {
             >
               <span>Ship From :</span>
               <br />
-              <select style={{ marginTop: "15px", width: "100%" }}>
+              <select style={{ marginTop: "15px", width: "100%" }} value={shipFrom}
+                onChange={event => {
+                  setShipFrom(event.target.value)
+                  }}>
                 <option value="">-- Select a service --</option>
-                <option value="address1">
+                <option value="On the Right Track Systems, Inc.174 Hudson Street New York, NY
+                  – 10013">
                   On the Right Track Systems, Inc.174 Hudson Street New York, NY
                   – 10013
                 </option>
-                <option value="address2">
+                <option value="On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
+                  – 17752">
                   On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
                   – 17752
                 </option>
-                <option value="Custom text">Custom text</option>
               </select>
             </td>
           </tr>
@@ -310,6 +330,7 @@ const Table2 = () => {
                 <span>Ship To: </span>
                 <br />
                 <input
+                name="shipTo"
                   type="text"
                   style={{
                     height: "50px",
@@ -318,6 +339,9 @@ const Table2 = () => {
                     backgroundColor: "#f1f4ff",
                     padding: "6px 0px"
                   }}
+                  onChange={event => {
+                  setShipTo(event.target.value);
+                }}
                 />
               </td>
             </tr>
