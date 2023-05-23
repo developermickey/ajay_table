@@ -225,7 +225,7 @@ const Table2 = () => {
           <tr>
             <td />
             <td className="required-service">
-              <b>REQUIRED: Please select a service type</b>
+              <b>Freight Charges: Please select a service type</b>
               <br />
               <label>
                 <input
@@ -267,7 +267,7 @@ const Table2 = () => {
                 }}
                 style={{ marginTop: "15px" }}
               >
-                <option value="">-- Select a delivery option --</option>
+                <option value="">Select A Carrier</option>
                 <option value="FedEx Freight">FedEx Freight</option>
                 <option value="A Duie Pyle">A Duie Pyle</option>
                 <option value="YRC">YRC</option>
@@ -281,7 +281,7 @@ const Table2 = () => {
                 onChange={event => {
                   setServiceType(event.target.value);
                 }}>
-                <option value="">-- Select a delivery option --</option>
+                <option value="">Select A Service Type</option>
                 <option value="Economy Freight">Economy Freight</option>
                 <option value="Priority Freight">Priority Freight</option>
               </select>
@@ -307,7 +307,7 @@ const Table2 = () => {
                 onChange={event => {
                   setShipFrom(event.target.value)
                   }}>
-                <option value="">-- Select a service --</option>
+                <option value="">Select An Address</option>
                 <option value="On the Right Track Systems, Inc.174 Hudson Street New York, NY
                   – 10013">
                   On the Right Track Systems, Inc.174 Hudson Street New York, NY

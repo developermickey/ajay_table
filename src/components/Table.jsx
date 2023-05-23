@@ -768,7 +768,7 @@ const Table = () => {
 			<table
 				style={{
 					width: "100%",
-					backgroundColor: "#452b93",
+					backgroundColor: "#a9b62f",
 					padding: "5px 20px",
 				}}
 			>
@@ -928,7 +928,7 @@ const Table = () => {
 				</tr>
 			</table>
 			<table
-				style={{ width: "100%", backgroundColor: "#452b93" }}
+				style={{ width: "100%", backgroundColor: "#a9b62f" }}
 				cellspacing='0'
 				cellpadding='0'
 			>
@@ -1206,7 +1206,7 @@ const Table = () => {
 									border: "0px",
 									backgroundColor: "#f1f4ff",
 									padding: "5px 0px",
-									borderBottom: "2px solid #452b93",
+									borderBottom: "2px solid #a9b62f",
 								}}
 							/>
 							per
@@ -1217,7 +1217,7 @@ const Table = () => {
 									border: "0px",
 									backgroundColor: "#f1f4ff",
 									padding: "5px 0px",
-									borderBottom: "2px solid #452b93",
+									borderBottom: "2px solid #a9b62f",
 								}}
 							/>
 							"
@@ -1255,7 +1255,7 @@ const Table = () => {
 									border: "0px",
 									backgroundColor: "#f1f4ff",
 									padding: "5px 0px",
-									borderBottom: "2px solid #452b93",
+									borderBottom: "2px solid #a9b62f",
 								}}
 							/>
 							<span> USD </span>
@@ -1290,7 +1290,7 @@ const Table = () => {
 								<td
 									style={{
 										verticalAlign: "top",
-										border: "1px solid #452b93",
+										border: "1px solid #a9b62f",
 										width: "60%",
 										borderTop: "0",
 									}}
@@ -1311,7 +1311,7 @@ const Table = () => {
 								<td
 									style={{
 										verticalAlign: "top",
-										border: "1px solid #452b93",
+										border: "1px solid #a9b62f",
 										width: "40%",
 										borderTop: "0",
 									}}
@@ -1334,7 +1334,7 @@ const Table = () => {
 								<td
 									style={{
 										verticalAlign: "top",
-										border: "1px solid #452b93",
+										border: "1px solid #a9b62f",
 										width: "60%",
 										borderTop: "0",
 									}}
@@ -1355,7 +1355,7 @@ const Table = () => {
 								<td
 									style={{
 										verticalAlign: "top",
-										border: "1px solid #452b93",
+										border: "1px solid #a9b62f",
 										width: "40%",
 										borderTop: "0",
 									}}
@@ -1392,7 +1392,7 @@ const Table = () => {
 								width: "calc(100% - 158px)",
 								marginLeft: "5px",
 								height: "20px",
-								borderBottom: "2px solid #452b93",
+								borderBottom: "2px solid #a9b62f",
 								display: "inline-block",
 							}}
 						></u>
@@ -1429,7 +1429,7 @@ const Table = () => {
 												fontSize: 14,
 												color: "#ffffff",
 												fontWeight: 700,
-												backgroundColor: "#452b93",
+												backgroundColor: "#a9b62f",
 												width: "100%",
 												padding: "5px 0px",
 											}}
@@ -1442,7 +1442,7 @@ const Table = () => {
 												width: "100%",
 												height: 50,
 												display: "block",
-												borderRight: "1px solid #452b93",
+												borderRight: "1px solid #a9b62f",
 											}}
 										></span>
 									</td>
@@ -1460,7 +1460,7 @@ const Table = () => {
 												fontSize: 14,
 												color: "#ffffff",
 												fontWeight: 700,
-												backgroundColor: "#452b93",
+												backgroundColor: "#a9b62f",
 												width: "100%",
 												padding: "5px 0px",
 											}}
@@ -1473,7 +1473,7 @@ const Table = () => {
 												width: "100%",
 												height: 50,
 												display: "block",
-												borderRight: "1px solid #452b93",
+												borderRight: "1px solid #a9b62f",
 											}}
 										></span>
 									</td>
@@ -1491,7 +1491,7 @@ const Table = () => {
 												fontSize: 14,
 												color: "#ffffff",
 												fontWeight: 700,
-												backgroundColor: "#452b93",
+												backgroundColor: "#a9b62f",
 												width: "100%",
 												padding: "5px 0px",
 											}}
@@ -1504,7 +1504,7 @@ const Table = () => {
 												width: "100%",
 												height: 50,
 												display: "block",
-												borderRight: "1px solid #452b93",
+												borderRight: "1px solid #a9b62f",
 											}}
 										></span>
 									</td>
@@ -1523,7 +1523,7 @@ const Table = () => {
 												fontSize: 14,
 												color: "#ffffff",
 												fontWeight: 700,
-												backgroundColor: "#452b93",
+												backgroundColor: "#a9b62f",
 												width: "100%",
 												padding: "5px 0px",
 											}}
@@ -1536,7 +1536,7 @@ const Table = () => {
 												width: "100%",
 												height: 50,
 												display: "block",
-												borderRight: "1px solid #452b93",
+												borderRight: "1px solid #a9b62f",
 											}}
 										></span>
 									</td>

@@ -29,38 +29,42 @@ body {
       width: 300px;
       position: relative;
       display: block;
-      top: 1px;
+      top: 55px;
+      left: 25px;
+      
   }
   .date-div b {
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 700;
   }
   .date-div {
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
   }
   .date-div.second-date {
       width: 36%;
   }
-  .required-service {
+
+  /* #929292 */
+  .required-service {   
       vertical-align: top;
-      border: 5px solid #452b93;
+      border: 5px solid #929292;
   }
   .required-service b {
       font-size: 18px;
       font-weight: 700;
-      color: #452b93;
+      color: #929292;
   }
   .required-service label {
       font-size: 20px;
       font-weight: 700;
-      color: #452b93;
+      color: #929292;
   }
   .blue-table-color {
       width: 100%;
-      background-color: #452b93;
+      background-color: #929292;
   }
   .table-half-50{
       width:50%;color: #fff; 
@@ -69,86 +73,86 @@ body {
   }
   .width-30 {
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 30%;
   }
   .width-20{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 20%;
   }
   .width-20 span, .width-30 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .width-8{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 8%;
   }
   .width-12{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 12%;
   }
   .width-12 span, .width-8 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-50{
-      vertical-align: top;border: 1px solid #452b93;width: 50%;
+      vertical-align: top;border: 1px solid #929292;width: 50%;
   }
   .row-half-50 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-25{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 25%;
   }
   .row-half-14{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 14%;
   }
   .row-half-11{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 11%;
   }
   .row-half-25 span, .row-half-14 span, .row-half-11 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-50 label {
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-100{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 100%;
   }
   .row-half-100 span {
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .blue-strip-row-100{
       width: 100%;
-      background-color: #452b93;
+      background-color: #929292;
   }
   .blue-strip-text{
       width:100%;
@@ -158,78 +162,78 @@ body {
   }
   .row-half-38{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 38%;
   }
   .row-half-22{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 32%;
   }
   .row-half-40{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 32%;
   }
   .row-half-40 span, .row-half-22 span, .row-half-38 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-41{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 41%;
   }
   .row-half-9{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 9%;
   }
   .row-half-13{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 13%;
   }
   .row-half-12{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 12%;
   }
   .row-half-16{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 16%;
   }
   .row-half-16 span, .row-half-12 span, .row-half-13 span, .row-half-9 span, .row-half-41 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .freight-charge-left{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 25%;
-      color: #452b93;
+      color: #929292;
   }
   .freight-charge-middle{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 25%;
       border-right: 0;
   }
   .freight-charge-right{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 50%;
       border-left: 0px;
   }
   .freight-charge-left label{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 700;
   }
   .left-middle-text{
@@ -246,52 +250,52 @@ body {
   .left-middle-text label{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 700;
   }
   .right-middle-text b{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 700;
   }
   .freight-charge-right span {
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .freight-charge-right b {
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 700;
   }
   .freight-charge-right label {
       display: inline-block;
       font-size: 14px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-37{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 37%;
   }
   .row-half-7{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 7%;
   }
   .row-half-17{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 17%;
   }
   .row-half-37 span, .row-half-7 span, .row-half-17 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-8{
@@ -336,7 +340,7 @@ body {
   }
   .row-half-4.orange-4{
       text-align: center;
-      background-color: #f47921;
+      background-color: #a8b72f;
   }
   .same-input{
       border-top: 3px solid #fff !important;
@@ -346,7 +350,7 @@ body {
       padding: 6px 0px;
   }
   .blue-border {
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       border-top: 0;
   }
   .row-half-12.without-input {
@@ -357,7 +361,7 @@ body {
   }
   .row-half-20{
       vertical-align: top;
-      border: 1px solid #452b93;
+      border: 1px solid #929292;
       width: 20%;
       border-top: 0;
   }
@@ -371,7 +375,7 @@ body {
   .row-half-20 span{
       display: inline-block;
       font-size: 16px;
-      color: #452b93;
+      color: #929292;
       font-weight: 400;
   }
   .row-half-80 span{
@@ -415,7 +419,7 @@ body {
       font-size: 14px;
       color: #ffffff;
       font-weight: 700;
-      background-color: #452b93;
+      background-color: #929292;
       width: 100%;
       padding: 5px 0px;
   }
@@ -425,7 +429,7 @@ body {
   .square {
     width: 10px;
     height: 10px;
-    border: 1px solid #452b93;
+    border: 1px solid #929292;
     display: inline-block;
     margin-right: 3px;
 }
