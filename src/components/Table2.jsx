@@ -595,6 +595,7 @@ const Table2 = () => {
                 <span>Special Instructions</span>
                 <br />
                 <input
+                  name="specialInstructions"
                   type="text"
                   style={{
                     height: "50px",
@@ -648,12 +649,12 @@ const Table2 = () => {
               <b>Trailer Loaded: </b>
               <br />
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" value="By Shipper" />
                 By Shipper
               </label>
               <br />
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" value="By Driver" />
                 By Driver
               </label>
             </td>
@@ -661,17 +662,17 @@ const Table2 = () => {
               <b>Freight Counted:: </b>
               <br />
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" value="By Shipper" />
                 By shipper
               </label>
               <br />
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" value="By Driver/Pallets Said To Contain" />
                 By driver/pallets said to contain
               </label>
               <br />
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" value="By Driver/Pieces" />
                 By driver/pieces
               </label>
             </td>
