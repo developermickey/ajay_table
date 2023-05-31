@@ -34,9 +34,6 @@ const Table2 = () => {
   const [shippingDims, setShippingDims] = useState([])
 
 
-
-  
-
   const handleChange = (e) => {
     const value = e.target.value
     const checked = e.target.checked
@@ -73,24 +70,24 @@ const Table2 = () => {
     const id = Math.floor(100000 + Math.random() * 90000).toString()
 
     const orders = {
-      name: order,
-      date: date,
-      otrtreference: otrtreference,
-      id: id,
-      billoflading: billoflading,
-      pickup: pickup,
-      po: po,
-      carrier: carrier,
-      isChecked: isChecked,
-      serviceType: serviceType,
-      shipFrom: shipFrom,
-      shipTo: shipTo,
-      trailerLoaded: trailerLoaded,
-      freightCounted: freightCounted,
-      specialInstructions: specialInstructions,
-      billFreightChargesTo: billFreightChargesTo,
-      shippingDims: shippingDims,
-      totalHU: totalHU,
+      ID: id,
+      Name: order,
+      Date: date,
+      "OTRT Reference": otrtreference,
+      "Bill Of Landing": billoflading,
+      Pickup: pickup,
+      PO: po,
+      Carrier: carrier,
+      "Freight Charges": isChecked,
+      "Service Type": serviceType,
+      "Ship From": shipFrom,
+      "Ship To": shipTo,
+      "Trailer Loaded": trailerLoaded,
+      "Freight Counted": freightCounted,
+      "Special Instructions": specialInstructions,
+      "Bill Freight Charges To": billFreightChargesTo,
+      "Shipping Dims": shippingDims,
+      "Total HU": totalHU,
     }
 
     if (order) {
@@ -102,29 +99,33 @@ const Table2 = () => {
     pdf.autoTable({
       head: [['Name', 'Client Details']],
       body: tableData,
-    })
-    pdf.save('form.pdf')
+    });
+    const pdfData = pdf.output('datauristring');
+    const attachment = {
+      data: pdfData,
+      fileName: 'OnTheRightTrack.pdf',
+    };
 
     // Send email
     const templateParams = {
-      name: order,
-      date: date,
-      otrtreference: otrtreference,
-      billoflading: billoflading,
-      pickup: pickup,
-      id: id,
-      po: po,
-      carrier: carrier,
-      isChecked: isChecked,
-      serviceType: serviceType,
-      shipFrom: shipFrom,
-      shipTo: shipTo,
-      trailerLoaded: trailerLoaded,
-      freightCounted: freightCounted,
-      specialInstructions: specialInstructions,
-      billFreightChargesTo: billFreightChargesTo,
-      shippingDims: shippingDims,
-      totalHU: totalHU,
+      ID: id,
+      Name: order,
+      Date: date,
+      "OTRT Reference": otrtreference,
+      "Bill Of Landing": billoflading,
+      Pickup: pickup,
+      PO: po,
+      Carrier: carrier,
+      "Freight Charges": isChecked,
+      "Service Type": serviceType,
+      "Ship From": shipFrom,
+      "Ship To": shipTo,
+      "Trailer Loaded": trailerLoaded,
+      "Freight Counted": freightCounted,
+      "Special Instructions": specialInstructions,
+      "Bill Freight Charges To": billFreightChargesTo,
+      "Shipping Dims": shippingDims,
+      "Total HU": totalHU,
     }
 
     try {
@@ -133,6 +134,7 @@ const Table2 = () => {
         'template_woh3a2i',
         templateParams,
         'xnoXqBMQa8cUpnPHk',
+        attachment
       )
       console.log('Email sent successfully!')
     } catch (error) {
