@@ -1,5 +1,8 @@
 import React, { useState, useRef } from 'react'
 import FedEx_Freight from './OTRT.jpg'
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 import jsPDF from 'jspdf'
 import 'jspdf-autotable'
 import {
@@ -164,19 +167,19 @@ const Table2 = () => {
             <td className="date-div">
               <b>Date</b>
               <br />
-              <input
+              <DatePicker selected={date} 
                 name="date"
                 type="date"
+                placeholderText="MM/DD/YYYY"
                 style={{
                   width: 'calc(100% - 0px)',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
                 }}
-                onChange={(event) => {
-                  setDate(event.target.value)
-                }}
+                onChange={(date) => setDate(date)}
               />
+             
             </td>
 
             <td className="date-div">
