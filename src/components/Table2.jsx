@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import FedEx_Freight from './OTRT.jpg'
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 import jsPDF from 'jspdf'
 import 'jspdf-autotable'
@@ -35,8 +34,25 @@ const Table2 = () => {
   const [totalHU, setTotalHU] = useState([])
   const [billFreightChargesTo, setBillFreightChargesTo] = useState([])
   const [shippingDims, setShippingDims] = useState([])
+  const [inputValues, setInputValues] = useState({
+    input1: '',
+    input2: '',
+    input3: '',
+    input4: '',
+    input5: '',
+    input6: '',
+    input7: '',
+    input8: '',
+    input9: '',
+    input10: '',
+    input11: '',
+    input12: ''
+  });
 
-
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
+  };
   const handleChange = (e) => {
     const value = e.target.value
     const checked = e.target.checked
@@ -91,24 +107,36 @@ const Table2 = () => {
       "Bill Freight Charges To": billFreightChargesTo,
       "Shipping Dims": shippingDims,
       "Total HU": totalHU,
+      "Pallets": inputValues,
+
     }
 
+    // if (order) {
+    //   console.log(orders)
+    //   setDoc(doc(db, 'order_data', id), orders)
+    // }
+    // const pdf = new jsPDF()
+    // const tableData = Object.entries(orders).map(([key, value]) => [key, value])
+    // pdf.autoTable({
+    //   head: [['Name', 'Client Details']],
+    //   body: tableData,
+    // });
+    // const pdfData = pdf.output('datauristring');
+    // const attachment = {
+    //   data: pdfData,
+    //   fileName: 'OnTheRightTrack.pdf',
+    // };
     if (order) {
-      console.log(orders)
-      setDoc(doc(db, 'order_data', id), orders)
+      console.log(orders);
+      setDoc(doc(db, "order_data", id), orders);
     }
-    const pdf = new jsPDF()
-    const tableData = Object.entries(orders).map(([key, value]) => [key, value])
+    const pdf = new jsPDF();
+    const tableData = Object.entries(orders).map(([key, value]) => [key, value]);
     pdf.autoTable({
-      head: [['Name', 'Client Details']],
+      head: [["Field", "Value"]],
       body: tableData,
     });
-    const pdfData = pdf.output('datauristring');
-    const attachment = {
-      data: pdfData,
-      fileName: 'OnTheRightTrack.pdf',
-    };
-
+    pdf.save("OnTheRightTrack.pdf");
     // Send email
     const templateParams = {
       ID: id,
@@ -129,6 +157,7 @@ const Table2 = () => {
       "Bill Freight Charges To": billFreightChargesTo,
       "Shipping Dims": shippingDims,
       "Total HU": totalHU,
+      "Pallets": inputValues,
     }
 
     try {
@@ -137,7 +166,6 @@ const Table2 = () => {
         'template_woh3a2i',
         templateParams,
         'xnoXqBMQa8cUpnPHk',
-        attachment
       )
       console.log('Email sent successfully!')
     } catch (error) {
@@ -495,42 +523,138 @@ const Table2 = () => {
           </tr>
           <tr>
             <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
+              <input 
+              type="text" 
+              className="same-input"
+              name="input1"
+              value={inputValues.input1}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }} 
+              />
             </td>
             <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input2"
+              value={inputValues.input2}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }} 
+              />
             </td>
             <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input3"
+              value={inputValues.input3}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input4"
+              value={inputValues.input4}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }} 
+              />
             </td>
             <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input5"
+              value={inputValues.input5}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input6"
+              value={inputValues.input6}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
           </tr>
           <tr>
             <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input7"
+              value={inputValues.input7}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input8"
+              value={inputValues.input8}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input9"
+              value={inputValues.input9}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input10"
+              value={inputValues.input10}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input11"
+              value={inputValues.input11}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
             <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
+            <input 
+              type="text" 
+              className="same-input"
+              name="input12"
+              value={inputValues.input12}
+              onChange={(e) => {
+                setInputValues(e.target.value)
+                }}  
+              />
             </td>
           </tr>
           <tr>
