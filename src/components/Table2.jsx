@@ -108,6 +108,8 @@ const Table2 = () => {
       "Shipping Dims": shippingDims,
       "Total HU": totalHU,
       "Pallets": inputValues,
+      "Cartons": inputValues,
+      "Weight (lbs.)": inputValues,
 
     }
 
@@ -158,6 +160,8 @@ const Table2 = () => {
       "Shipping Dims": shippingDims,
       "Total HU": totalHU,
       "Pallets": inputValues,
+      "Cartons": inputValues,
+      "Weight (lbs.)": inputValues,
     }
 
     try {
@@ -165,6 +169,7 @@ const Table2 = () => {
         'service_67sdcul',
         'template_woh3a2i',
         templateParams,
+        inputValues,
         'xnoXqBMQa8cUpnPHk',
       )
       console.log('Email sent successfully!')
@@ -528,9 +533,7 @@ const Table2 = () => {
               className="same-input"
               name="input1"
               value={inputValues.input1}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }} 
+              onChange={handleInputChange} 
               />
             </td>
             <td className="row-half-8 blue-border">
@@ -539,9 +542,7 @@ const Table2 = () => {
               className="same-input"
               name="input2"
               value={inputValues.input2}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }} 
+              onChange={handleInputChange} 
               />
             </td>
             <td className="row-half-4 blue-border">
@@ -550,9 +551,7 @@ const Table2 = () => {
               className="same-input"
               name="input3"
               value={inputValues.input3}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange}  
               />
             </td>
             <td className="row-half-4 blue-border">
@@ -561,9 +560,7 @@ const Table2 = () => {
               className="same-input"
               name="input4"
               value={inputValues.input4}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }} 
+              onChange={handleInputChange}  
               />
             </td>
             <td className="row-half-46 blue-border">
@@ -572,9 +569,7 @@ const Table2 = () => {
               className="same-input"
               name="input5"
               value={inputValues.input5}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange} 
               />
             </td>
             <td className="row-half-10 blue-border">
@@ -583,9 +578,7 @@ const Table2 = () => {
               className="same-input"
               name="input6"
               value={inputValues.input6}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange}  
               />
             </td>
           </tr>
@@ -596,9 +589,7 @@ const Table2 = () => {
               className="same-input"
               name="input7"
               value={inputValues.input7}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange}  
               />
             </td>
             <td className="row-half-8 blue-border">
@@ -607,9 +598,7 @@ const Table2 = () => {
               className="same-input"
               name="input8"
               value={inputValues.input8}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange} 
               />
             </td>
             <td className="row-half-4 blue-border">
@@ -618,9 +607,7 @@ const Table2 = () => {
               className="same-input"
               name="input9"
               value={inputValues.input9}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange} 
               />
             </td>
             <td className="row-half-4 blue-border">
@@ -629,9 +616,7 @@ const Table2 = () => {
               className="same-input"
               name="input10"
               value={inputValues.input10}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange}  
               />
             </td>
             <td className="row-half-46 blue-border">
@@ -640,9 +625,7 @@ const Table2 = () => {
               className="same-input"
               name="input11"
               value={inputValues.input11}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange}  
               />
             </td>
             <td className="row-half-10 blue-border">
@@ -651,9 +634,7 @@ const Table2 = () => {
               className="same-input"
               name="input12"
               value={inputValues.input12}
-              onChange={(e) => {
-                setInputValues(e.target.value)
-                }}  
+              onChange={handleInputChange} 
               />
             </td>
           </tr>
