@@ -1,133 +1,66 @@
-import React, { useState, useRef } from 'react'
-import FedEx_Freight from './OTRT.jpg'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import jsPDF from 'jspdf'
-import 'jspdf-autotable'
+import React, { useState, useRef } from "react";
+import FedEx_Freight from "./OTRT.jpg";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 import {
   addDoc,
   collection,
   doc,
   getDocs,
   getFirestore,
-  setDoc,
-} from 'firebase/firestore'
-import { app } from '../firebase.config'
-import emailjs from '@emailjs/browser'
+  setDoc
+} from "firebase/firestore";
+import { app } from "../firebase.config";
+import emailjs from "@emailjs/browser";
 
 const Table2 = () => {
-  const db = getFirestore(app)
-  const [order, setOrder] = useState('')
-  const [date, setDate] = useState('')
-  const [otrtreference, setOTRTReference] = useState('')
-  const [billoflading, setBilloflading] = useState('')
-  const [pickup, setPickup] = useState('')
-  const [po, setPo] = useState('')
-  const [carrier, setCarrier] = useState('')
-  const [isChecked, setIsChecked] = useState([])
-  const [trailerLoaded, setTrailerLoaded] = useState([])
-  const [freightCounted, setFreightCounted] = useState([])
-  const [serviceType, setServiceType] = useState([])
-  const [shipFrom, setShipFrom] = useState([])
-  const [shipTo, setShipTo] = useState([])
-  const [specialInstructions, setSpecialInstructions] = useState([])
-  const [totalHU, setTotalHU] = useState([])
-  const [billFreightChargesTo, setBillFreightChargesTo] = useState([])
-  const [shippingDims, setShippingDims] = useState([])
-  const [inputValues, setInputValues] = useState({
-    input1: '',
-    input2: '',
-    input3: '',
-    input4: '',
-    input5: '',
-    input6: '',
-    input7: '',
-    input8: '',
-    input9: '',
-    input10: '',
-    input11: '',
-    input12: ''
-  });
+  const db = getFirestore(app);
+  const [order, setOrder] = useState("");
+  const [date, setDate] = useState("");
+  const [otrtreference, setOTRTReference] = useState("");
+  const [billoflading, setBilloflading] = useState("");
+  const [pickup, setPickup] = useState("");
+  const [po, setPo] = useState("");
+  const [carrier, setCarrier] = useState("");
+  const [isChecked, setIsChecked] = useState([]);
+  const [serviceType, setServiceType] = useState([]);
+  const [shipFrom, setShipFrom] = useState([]);
+  const [shipTo, setShipTo] = useState([]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setInputValues({ ...inputValues, [name]: value });
-  };
   const handleChange = (e) => {
-    const value = e.target.value
-    const checked = e.target.checked
-    console.log(value, checked)
+    const value = e.target.value;
+    const checked = e.target.checked;
+    console.log(value, checked);
     if (checked) {
-      setIsChecked([...isChecked, value])
-    } else {
-      setIsChecked(isChecked.filter((e) => e !== value))
+      setIsChecked([
+        ...isChecked, value
+      ])
+    }else {
+      setIsChecked(isChecked.filter((e) => (e !== value)));
     }
   }
-  const handleChanges = (e) => {
-    const value = e.target.value
-    const cchecked = e.target.checked
-    console.log(value, cchecked)
-    if (cchecked) {
-      setTrailerLoaded([...trailerLoaded, value])
-    } else {
-      setTrailerLoaded(trailerLoaded.filter((e) => e !== value))
-    }
-  }
-  const handleChangess = (e) => {
-    const value = e.target.value
-    const ccchecked = e.target.checked
-    console.log(value, ccchecked)
-    if (ccchecked) {
-      setFreightCounted([...freightCounted, value])
-    } else {
-      setFreightCounted(freightCounted.filter((e) => e !== value))
-    }
-  }
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log('Form submitted!')
-    const id = Math.floor(100000 + Math.random() * 90000).toString()
+  const handleSubmit = async e => {
+    e.preventDefault();
+    console.log("Form submitted!");
+    const id = Math.floor(100000 + Math.random() * 90000).toString();
 
+	
     const orders = {
-      ID: id,
-      Name: order,
-      Date: date,
-      "OTRT Reference": otrtreference,
-      "Bill Of Landing": billoflading,
-      Pickup: pickup,
-      PO: po,
-      Carrier: carrier,
-      "Freight Charges": isChecked,
-      "Service Type": serviceType,
-      "Ship From": shipFrom,
-      "Ship To": shipTo,
-      "Trailer Loaded": trailerLoaded,
-      "Freight Counted": freightCounted,
-      "Special Instructions": specialInstructions,
-      "Bill Freight Charges To": billFreightChargesTo,
-      "Shipping Dims": shippingDims,
-      "Total HU": totalHU,
-      "Pallets": inputValues,
-      "Cartons": inputValues,
-      "Weight (lbs.)": inputValues,
+      name: order,
+      date: date,
+      otrtreference: otrtreference,
+      id: id,
+      billoflading: billoflading,
+      pickup: pickup,
+      po: po,
+      carrier: carrier,
+      isChecked: isChecked,
+      serviceType: serviceType,
+      shipFrom: shipFrom,
+      shipTo: shipTo,
 
-    }
+    };
 
-    // if (order) {
-    //   console.log(orders)
-    //   setDoc(doc(db, 'order_data', id), orders)
-    // }
-    // const pdf = new jsPDF()
-    // const tableData = Object.entries(orders).map(([key, value]) => [key, value])
-    // pdf.autoTable({
-    //   head: [['Name', 'Client Details']],
-    //   body: tableData,
-    // });
-    // const pdfData = pdf.output('datauristring');
-    // const attachment = {
-    //   data: pdfData,
-    //   fileName: 'OnTheRightTrack.pdf',
-    // };
     if (order) {
       console.log(orders);
       setDoc(doc(db, "order_data", id), orders);
@@ -138,45 +71,40 @@ const Table2 = () => {
       head: [["Field", "Value"]],
       body: tableData,
     });
-    pdf.save("OnTheRightTrack.pdf");
+    pdf.save("form.pdf");
+
+
     // Send email
     const templateParams = {
-      ID: id,
-      Name: order,
-      Date: date,
-      "OTRT Reference": otrtreference,
-      "Bill Of Landing": billoflading,
-      Pickup: pickup,
-      PO: po,
-      Carrier: carrier,
-      "Freight Charges": isChecked,
-      "Service Type": serviceType,
-      "Ship From": shipFrom,
-      "Ship To": shipTo,
-      "Trailer Loaded": trailerLoaded,
-      "Freight Counted": freightCounted,
-      "Special Instructions": specialInstructions,
-      "Bill Freight Charges To": billFreightChargesTo,
-      "Shipping Dims": shippingDims,
-      "Total HU": totalHU,
-      "Pallets": inputValues,
-      "Cartons": inputValues,
-      "Weight (lbs.)": inputValues,
-    }
+      name: order,
+      date: date,
+      otrtreference: otrtreference,
+      billoflading: billoflading,
+      pickup: pickup,
+      id: id,
+      po: po,
+      carrier: carrier,
+      isChecked: isChecked,
+      serviceType: serviceType,
+      shipFrom: shipFrom,
+      shipTo: shipTo,
+
+    };
 
     try {
       await emailjs.send(
-        'service_67sdcul',
-        'template_woh3a2i',
+        "service_67sdcul",
+        "template_woh3a2i",
         templateParams,
-        inputValues,
-        'xnoXqBMQa8cUpnPHk',
-      )
-      console.log('Email sent successfully!')
+        "xnoXqBMQa8cUpnPHk"
+      );
+      console.log("Email sent successfully!");
     } catch (error) {
-      console.error('Error sending email:', error)
+      console.error("Error sending email:", error);
     }
-  }
+   
+   
+  };
 
   // Rest of your code
 
@@ -185,10 +113,10 @@ const Table2 = () => {
       <form onSubmit={handleSubmit}>
         <table
           style={{
-            border: '1px solid #482e92',
-            width: '100%',
-            padding: '0px',
-            borderSpacing: 'none',
+            border: "1px solid #482e92",
+            width: "100%",
+            padding: "0px",
+            borderSpacing: "none"
           }}
           cellSpacing="0"
           cellPadding="0"
@@ -200,19 +128,19 @@ const Table2 = () => {
             <td className="date-div">
               <b>Date</b>
               <br />
-              <DatePicker selected={date} 
+              <input
                 name="date"
                 type="date"
-                placeholderText="MM/DD/YYYY"
                 style={{
-                  width: 'calc(100% - 0px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  width: "calc(100% - 0px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
-                onChange={(date) => setDate(date)}
+                onChange={event => {
+                  setDate(event.target.value);
+                }}
               />
-             
             </td>
 
             <td className="date-div">
@@ -222,13 +150,13 @@ const Table2 = () => {
                 name="otrtreference"
                 type="text"
                 style={{
-                  width: 'calc(100% - 0px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  width: "calc(100% - 0px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
-                onChange={(event) => {
-                  setOTRTReference(event.target.value)
+                onChange={event => {
+                  setOTRTReference(event.target.value);
                 }}
               />
             </td>
@@ -239,13 +167,13 @@ const Table2 = () => {
                 name="billoflading"
                 type="text"
                 style={{
-                  width: 'calc(100% - 0px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  width: "calc(100% - 0px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
-                onChange={(event) => {
-                  setBilloflading(event.target.value)
+                onChange={event => {
+                  setBilloflading(event.target.value);
                 }}
               />
             </td>
@@ -258,13 +186,13 @@ const Table2 = () => {
                 name="pickup"
                 type="text"
                 style={{
-                  width: 'calc(100% - 0px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  width: "calc(100% - 0px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
-                onChange={(event) => {
-                  setPickup(event.target.value)
+                onChange={event => {
+                  setPickup(event.target.value);
                 }}
               />
             </td>
@@ -276,13 +204,13 @@ const Table2 = () => {
                 name="po"
                 type="text"
                 style={{
-                  width: 'calc(100% - 0px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  width: "calc(100% - 0px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
-                onChange={(event) => {
-                  setPo(event.target.value)
+                onChange={event => {
+                  setPo(event.target.value);
                 }}
               />
             </td>
@@ -293,13 +221,13 @@ const Table2 = () => {
                 name="order"
                 type="text"
                 style={{
-                  width: 'calc(100% - 0px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  width: "calc(100% - 0px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
-                onChange={(event) => {
-                  setOrder(event.target.value)
+                onChange={event => {
+                  setOrder(event.target.value);
                 }}
               />
             </td>
@@ -311,7 +239,7 @@ const Table2 = () => {
               <br />
               <label>
                 <input
-                  name={isChecked}
+                name={isChecked}
                   onChange={handleChange}
                   type="checkbox"
                   value="Prepaid"
@@ -320,22 +248,22 @@ const Table2 = () => {
               </label>
               <br />
               <label>
-                <input
-                  name={isChecked}
-                  type="checkbox"
-                  onChange={handleChange}
-                  value="3rd Party"
-                />
+                <input 
+                name={isChecked}
+				type="checkbox" 
+        onChange={handleChange}
+                value="3rd Party"
+				/>
                 3rd Party
               </label>
               <br />
               <label>
-                <input
-                  name={isChecked}
-                  type="checkbox"
-                  onChange={handleChange}
-                  value="Collect"
-                />
+                <input 
+				name="isChecked"
+				type="checkbox" 
+        onChange={handleChange}
+                value="Collect"
+				/>
                 Collect
               </label>
             </td>
@@ -344,10 +272,10 @@ const Table2 = () => {
               <br />
               <select
                 value={carrier}
-                onChange={(event) => {
-                  setCarrier(event.target.value)
+                onChange={event => {
+                  setCarrier(event.target.value);
                 }}
-                style={{ marginTop: '15px' }}
+                style={{ marginTop: "15px" }}
               >
                 <option value="">Select A Carrier</option>
                 <option value="FedEx Freight">FedEx Freight</option>
@@ -359,13 +287,10 @@ const Table2 = () => {
             <td className="required-service">
               <b>Service Type: </b>
               <br />
-              <select
-                style={{ marginTop: '15px' }}
-                value={serviceType}
-                onChange={(event) => {
-                  setServiceType(event.target.value)
-                }}
-              >
+              <select style={{ marginTop: "15px" }} value={serviceType}
+                onChange={event => {
+                  setServiceType(event.target.value);
+                }}>
                 <option value="">Select A Service Type</option>
                 <option value="Economy Freight">Economy Freight</option>
                 <option value="Priority Freight">Priority Freight</option>
@@ -378,35 +303,28 @@ const Table2 = () => {
             <td
               className=""
               style={{
-                marginBottom: '20px',
-                height: '50px',
-                width: 'calc(100% - 0px)',
-                border: '1px solid #452b93',
-                padding: '6px 0px',
-                color: '#452b93',
+                marginBottom: "20px",
+                height: "50px",
+                width: "calc(100% - 0px)",
+                border: "1px solid #452b93",
+                padding: "6px 0px",
+                color: "#452b93"
               }}
             >
               <span>Ship From :</span>
               <br />
-              <select
-                style={{ marginTop: '15px', width: '100%' }}
-                value={shipFrom}
-                onChange={(event) => {
+              <select style={{ marginTop: "15px", width: "100%" }} value={shipFrom}
+                onChange={event => {
                   setShipFrom(event.target.value)
-                }}
-              >
+                  }}>
                 <option value="">Select An Address</option>
-                <option
-                  value="On the Right Track Systems, Inc.174 Hudson Street New York, NY
-                  – 10013"
-                >
+                <option value="On the Right Track Systems, Inc.174 Hudson Street New York, NY
+                  – 10013">
                   On the Right Track Systems, Inc.174 Hudson Street New York, NY
                   – 10013
                 </option>
-                <option
-                  value="On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
-                  – 17752"
-                >
+                <option value="On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
+                  – 17752">
                   On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
                   – 17752
                 </option>
@@ -416,226 +334,330 @@ const Table2 = () => {
         </table>
 
         <table className="table-full" cellSpacing="0" cellPadding="0">
-          <tbody>
-            <tr>
-              <td className="row-half-100">
-                <span>Ship To: </span>
-                <br />
-                <input
-                  name="shipTo"
-                  type="text"
-                  style={{
-                    height: '50px',
-                    width: 'calc(100% - 0px)',
-                    border: '0px',
-                    backgroundColor: '#f1f4ff',
-                    padding: '6px 0px',
-                  }}
-                  onChange={(event) => {
-                    setShipTo(event.target.value)
-                  }}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <tbody>
+    <tr>
+      <td className="row-half-100" colSpan="5">
+        <span>Ship To: </span>
+      </td>
+    </tr>
+    <tr>
+      <td className="date-div">
+        <b>Company name: </b>
+        <br />
+        <input
+          name="pickup"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setPickup(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b>street: </b>
+        <br />
+        <input
+          name="po"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setPo(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b> city:</b>
+        <br />
+        <input
+          name="order"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b>state:</b>
+        <br />
+        <input
+          name="order"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b>zip:</b>
+        <br />
+        <input
+          name="order"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-        <table className="table-full" cellSpacing="0" cellPadding="0">
-          <tbody>
-            <tr>
-              <td className="row-half-100">
-                <span>Bill Freight Charges To: </span>
-                <br />
-                <input
-                  name='billFreightChargesTo'
-                  type="text"
-                  style={{
-                    height: '50px',
-                    width: 'calc(100% - 0px)',
-                    border: '0px',
-                    backgroundColor: '#f1f4ff',
-                    padding: '6px 0px',
-                  }}
-                  onChange={(event) => {
-                    setBillFreightChargesTo(event.target.value)
-                  }}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table className="table-full" cellSpacing="0" cellPadding="0">
-          <tbody>
-            <tr>
-              <td className="row-half-100">
-                <span>Shipping Dims:</span>
-                <br />
-                <input
-                  name='shippingDims'
-                  type="text"
-                  style={{
-                    height: '50px',
-                    width: 'calc(100% - 0px)',
-                    border: '0px',
-                    backgroundColor: '#f1f4ff',
-                    padding: '6px 0px',
-                  }}
-                  onChange={(event) => {
-                    setShippingDims(event.target.value)
-                  }}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+<table className="table-full" cellSpacing="0" cellPadding="0">
+  <tbody>
+    <tr>
+      <td className="row-half-100" colSpan="5">
+        <span>Bill Freight Charges To: </span>
+      </td>
+    </tr>
+    <tr>
+      <td className="date-div">
+        <b>Company name: </b>
+        <br />
+        <input
+          name="pickup"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setPickup(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b>street: </b>
+        <br />
+        <input
+          name="po"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setPo(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b> city:</b>
+        <br />
+        <input
+          name="order"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b>state:</b>
+        <br />
+        <input
+          name="order"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        />
+      </td>
+      <td className="date-div">
+        <b>zip:</b>
+        <br />
+        <input
+          name="order"
+          type="text"
+          style={{
+            width: "100%",
+            border: "0px",
+            backgroundColor: "#f1f4ff",
+            padding: "6px 0px"
+          }}
+          onChange={event => {
+            setOrder(event.target.value);
+          }}
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+        
+<table className="table-full" cellSpacing="0" cellPadding="0">
+  <tbody>
+    <tr>
+      <td className="row-half-100" style={{ textAlign: "center" }}>
+        <span style={{ fontWeight: "bold" }}>Shipping Dims:</span>
+        <br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
 
         <table
-          style={{ width: '100%', backgroundColor: '#452b93' }}
+          style={{ width: "100%", backgroundColor: "#452b93" }}
           cellspacing="0"
           cellpadding="0"
         >
           <tr>
-            <td className="row-half-8">
-              <span>Pallets</span>
+  <td className="row-half-8" style={{ textAlign: "center" }}>
+    <span>Pallets</span>
+  </td>
+  <td className="row-half-8" style={{ textAlign: "center" }}>
+    <span>Cartons</span>
+  </td>
+  <td className="row-half-3" style={{ textAlign: "center" }}>
+    <span>Weight (lbs.)</span>
+  </td>
+  <td className="row-half-4 orange-4" style={{ textAlign: "center" }}>
+    <span>Size (in)</span>
+  </td>
+  <td className="row-half-46" style={{ textAlign: "center" }}>
+  <span>Description</span>
+  <select
+    style={{ width: "100%" }}
+    onChange={(event) => {
+      const selectElement = event.target;
+      const customInput = document.getElementById("custom-input");
+
+      if (selectElement.value === "custom") {
+        if (!customInput) {
+          const input = document.createElement("input");
+          input.id = "custom-input";
+          input.type = "text";
+          input.style.width = "100%";
+          selectElement.parentNode.appendChild(input);
+        }
+      } else {
+        if (customInput) {
+          customInput.parentNode.removeChild(customInput);
+        }
+      }
+    }}
+  >
+    <option value="">-- Select option --</option>
+    <option value="Disposable Curtains">Disposable Curtains</option>
+    <option value="Hospital Track">Hospital Track</option>
+    <option value="custom">Custom</option>
+  </select>
+</td>
+
+<td className="row-half-10" style={{ textAlign: "center" }}>
+  <span>Class</span>
+  <select
+    style={{ width: "100%" }}
+    onChange={(event) => {
+      const selectElement = event.target;
+      const customInput = document.getElementById("class-custom-input");
+
+      if (selectElement.value === "custom") {
+        if (!customInput) {
+          const input = document.createElement("input");
+          input.id = "class-custom-input";
+          input.type = "text";
+          input.style.width = "100%";
+          selectElement.parentNode.appendChild(input);
+        }
+      } else {
+        if (customInput) {
+          customInput.parentNode.removeChild(customInput);
+        }
+      }
+    }}
+  >
+    <option value="">-- Select option --</option>
+    <option value="85">85</option>
+    <option value="125">125</option>
+    <option value="custom">Custom</option>
+  </select>
+</td>
+
+</tr>
+
+          <tr>
+            <td className="row-half-8 blue-border">
+              <input type="text" className="same-input" />
             </td>
-            <td className="row-half-8">
-              <span>Cartons</span>
+            <td className="row-half-8 blue-border">
+              <input type="text" className="same-input" />
             </td>
-            <td className="row-half-3">
-              <span>Weight (lbs.)</span>
+            <td className="row-half-4 blue-border">
+              <input type="text" className="same-input" />
             </td>
-            <td className="row-half-4 orange-4">
-              <span>Size (in)</span>
+            <td className="row-half-4 blue-border">
+              <input type="text" className="same-input" />
             </td>
-            <td className="row-half-46">
-              <span>Description</span>
-              <select style={{ width: '100%' }}>
-                <option value="">-- Select option --</option>
-                <option value="Disposable Curtains">Disposable Curtains</option>
-                <option value="Hospital Track">Hospital Track</option>
-                <option value="custom">Custom</option>
-              </select>
+            <td className="row-half-46 blue-border">
+              <input type="text" className="same-input" />
             </td>
-            <td className="row-half-10">
-              <span>Class</span>
-              <select style={{ width: '100%' }}>
-                <option value="">-- Select option --</option>
-                <option value="85">85</option>
-                <option value="125">125</option>
-                <option value="custom">Custom</option>
-              </select>
+            <td className="row-half-10 blue-border">
+              <input type="text" className="same-input" />
             </td>
           </tr>
           <tr>
             <td className="row-half-8 blue-border">
-              <input 
-              type="text" 
-              className="same-input"
-              name="input1"
-              value={inputValues.input1}
-              onChange={handleInputChange} 
-              />
+              <input type="text" className="same-input" />
             </td>
             <td className="row-half-8 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input2"
-              value={inputValues.input2}
-              onChange={handleInputChange} 
-              />
+              <input type="text" className="same-input" />
             </td>
             <td className="row-half-4 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input3"
-              value={inputValues.input3}
-              onChange={handleInputChange}  
-              />
+              <input type="text" className="same-input" />
             </td>
             <td className="row-half-4 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input4"
-              value={inputValues.input4}
-              onChange={handleInputChange}  
-              />
+              <input type="text" className="same-input" />
             </td>
             <td className="row-half-46 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input5"
-              value={inputValues.input5}
-              onChange={handleInputChange} 
-              />
+              <input type="text" className="same-input" />
             </td>
             <td className="row-half-10 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input6"
-              value={inputValues.input6}
-              onChange={handleInputChange}  
-              />
-            </td>
-          </tr>
-          <tr>
-            <td className="row-half-8 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input7"
-              value={inputValues.input7}
-              onChange={handleInputChange}  
-              />
-            </td>
-            <td className="row-half-8 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input8"
-              value={inputValues.input8}
-              onChange={handleInputChange} 
-              />
-            </td>
-            <td className="row-half-4 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input9"
-              value={inputValues.input9}
-              onChange={handleInputChange} 
-              />
-            </td>
-            <td className="row-half-4 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input10"
-              value={inputValues.input10}
-              onChange={handleInputChange}  
-              />
-            </td>
-            <td className="row-half-46 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input11"
-              value={inputValues.input11}
-              onChange={handleInputChange}  
-              />
-            </td>
-            <td className="row-half-10 blue-border">
-            <input 
-              type="text" 
-              className="same-input"
-              name="input12"
-              value={inputValues.input12}
-              onChange={handleInputChange} 
-              />
+              <input type="text" className="same-input" />
             </td>
           </tr>
           <tr>
@@ -724,30 +746,13 @@ const Table2 = () => {
             <td className="row-half-20">
               <span>TOTAL H/U:</span>
               <input
-                name='totalHU'
                 type="text"
                 style={{
-                  marginTop: '13px',
-                  width: 'calc(100% - 83px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
-                }}
-                onChange={(event) => {
-                    setTotalHU(event.target.value)
-                }}
-                
-              />
-            </td>
-            <td className="row-half-20">
-              <input
-                type="text"
-                style={{
-                  marginTop: '13px',
-                  width: 'calc(100% - 83px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  marginTop: "13px",
+                  width: "calc(100% - 83px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
               />
             </td>
@@ -755,11 +760,23 @@ const Table2 = () => {
               <input
                 type="text"
                 style={{
-                  marginTop: '13px',
-                  width: 'calc(100% - 83px)',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
+                  marginTop: "13px",
+                  width: "calc(100% - 83px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
+                }}
+              />
+            </td>
+            <td className="row-half-20">
+              <input
+                type="text"
+                style={{
+                  marginTop: "13px",
+                  width: "calc(100% - 83px)",
+                  border: "0px",
+                  backgroundColor: "#f1f4ff",
+                  padding: "6px 0px"
                 }}
               />
             </td>
@@ -775,15 +792,12 @@ const Table2 = () => {
                   name="specialInstructions"
                   type="text"
                   style={{
-                    height: '50px',
-                    width: 'calc(100% - 0px)',
-                    border: '0px',
-                    backgroundColor: '#f1f4ff',
-                    padding: '6px 0px',
+                    height: "50px",
+                    width: "calc(100% - 0px)",
+                    border: "0px",
+                    backgroundColor: "#f1f4ff",
+                    padding: "6px 0px"
                   }}
-                  onChange={(event) => {
-                    setSpecialInstructions(event.target.value)
-                }}
                 />
               </td>
             </tr>
@@ -792,10 +806,10 @@ const Table2 = () => {
 
         <table
           style={{
-            border: '1px solid #482e92',
-            width: '100%',
-            padding: '0px',
-            borderSpacing: 'none',
+            border: "1px solid #482e92",
+            width: "100%",
+            padding: "0px",
+            borderSpacing: "none"
           }}
           cellSpacing="0"
           cellPadding="0"
@@ -808,16 +822,16 @@ const Table2 = () => {
               <br />
               <u
                 style={{
-                  width: 'calc(100% - 120px)',
-                  marginLeft: '5px',
-                  height: '10px',
-                  borderBottom: '2px solid #452b93',
-                  display: 'inline-block',
+                  width: "calc(100% - 120px)",
+                  marginLeft: "5px",
+                  height: "10px",
+                  borderBottom: "2px solid #452b93",
+                  display: "inline-block"
                 }}
               />
               <br />
               <br />
-              <b style={{ color: '#452b93' }}>
+              <b style={{ color: "#452b93" }}>
                 This is to certify that the above named materials
                 <br /> classified packaged, marked, and labeled, and
                 <br /> are in proper condition for transportation
@@ -829,52 +843,30 @@ const Table2 = () => {
               <b>Trailer Loaded: </b>
               <br />
               <label>
-                <input
-                  name={trailerLoaded}
-                  onChange={handleChanges}
-                  type="checkbox"
-                  value="By Shipper"
-                />
+                <input type="checkbox" value="By Shipper" />
                 By Shipper
               </label>
               <br />
               <label>
-                <input  
-                  name={trailerLoaded}
-                  onChange={handleChanges}
-                  type="checkbox" 
-                  value="By Driver" />
+                <input type="checkbox" value="By Driver" />
                 By Driver
               </label>
             </td>
             <td className="required-service">
-              <b>Freight Counted: </b>
+              <b>Freight Counted:: </b>
               <br />
               <label>
-                <input  
-                  name={freightCounted}
-                  onChange={handleChangess}
-                  type="checkbox" 
-                  value="By Shipper" />
+                <input type="checkbox" value="By Shipper" />
                 By shipper
               </label>
               <br />
               <label>
-                <input
-                 name={freightCounted}
-                  onChange={handleChangess}
-                  type="checkbox"
-                  value="By Driver/Pallets Said To Contain"
-                />
+                <input type="checkbox" value="By Driver/Pallets Said To Contain" />
                 By driver/pallets said to contain
               </label>
               <br />
               <label>
-                <input  
-                  name={freightCounted}
-                  onChange={handleChangess}
-                  type="checkbox" 
-                  value="By Driver/Pieces" />
+                <input type="checkbox" value="By Driver/Pieces" />
                 By driver/pieces
               </label>
             </td>
@@ -884,17 +876,17 @@ const Table2 = () => {
               <br />
               <u
                 style={{
-                  width: 'calc(100% - 120px)',
-                  marginLeft: '5px',
-                  height: '10px',
-                  borderBottom: '2px solid #452b93',
-                  display: 'inline-block',
+                  width: "calc(100% - 120px)",
+                  marginLeft: "5px",
+                  height: "10px",
+                  borderBottom: "2px solid #452b93",
+                  display: "inline-block"
                 }}
               />
               <br />
 
               <br />
-              <b style={{ color: '#452b93' }}>
+              <b style={{ color: "#452b93" }}>
                 Carrier acknowledges receipt packages and required <br />
                 placards ,Carrier certifies emergency response information
                 <br />
@@ -914,7 +906,7 @@ const Table2 = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Table2
+export default Table2;
