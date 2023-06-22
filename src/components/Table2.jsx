@@ -15,6 +15,7 @@ import { app } from "../firebase.config";
 import emailjs from "@emailjs/browser";
 
 
+
 const Table2 = () => {
   const db = getFirestore(app);
   const [order, setOrder] = useState("");
@@ -45,26 +46,11 @@ const Table2 = () => {
       setIsChecked(isChecked.filter((e) => (e !== value)));
     }
   }
-   
-// 
-
-  const componentRef = useRef();
-
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: 'Print Document',
-    onAfterPrint: async () => {
-      await generateAndSavePDF();
-    },
-  });
-
-  const generateAndSavePDF = async () => {
-    // Code to generate and save the PDF
-  };
-
-// 
-
-
+ 
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
   const handleInputChange = (e, rowIndex, cellIndex) => {
     const value = e.target.value;
   
@@ -616,19 +602,19 @@ const Table2 = () => {
         >
           <thead>
             <tr>
-              <th className="row-half-8" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+              <th className="row-half-8" style={{ textAlign: "center" }}>
                 <span>Pallets</span>
               </th>
-              <th className="row-half-8" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+              <th className="row-half-8" style={{ textAlign: "center" }}>
                 <span>Cartons</span>
               </th>
-              <th className="row-half-3" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+              <th className="row-half-3" style={{ textAlign: "center" }}>
                 <span>Weight (lbs.)</span>
               </th>
               <th className="row-half-4 orange-4" style={{ textAlign: "center" }}>
                 <span>Size (in)</span>
               </th>
-              <th className="row-half-46" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+              <th className="row-half-46" style={{ textAlign: "center" }}>
                 <span>Description</span>
                 <select
                   style={{ width: "100%" }}
@@ -657,7 +643,7 @@ const Table2 = () => {
                   <option value="custom">Custom</option>
                 </select>
               </th>
-              <th className="row-half-10" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+              <th className="row-half-10" style={{ textAlign: "center" }}>
                 <span>Class</span>
                 <select
                   style={{ width: "100%" }}
@@ -908,11 +894,14 @@ const Table2 = () => {
         </table>
         </div>
         {/* <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="person@example.com" /> */}
-        <button type="submit" onClick={handleSubmit} onSubmit={handlePrint} >Submit </button>
-        <button type="submit"  >Print </button>
+        <button type="submit" onClick={handleSubmit} >
+          Submit
+        </button>
+        <button onClick={handlePrint}>Print this out!</button>
 
       </form>
     </div>
   );
 };
+
 export default Table2;
