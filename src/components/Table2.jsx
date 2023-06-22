@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useReactToPrint } from 'react-to-print';
 import FedEx_Freight from "./OTRT.jpg";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -13,6 +14,7 @@ import {
 import { app } from "../firebase.config";
 import emailjs from "@emailjs/browser";
 
+
 const Table2 = () => {
   const db = getFirestore(app);
   const [order, setOrder] = useState("");
@@ -26,6 +28,10 @@ const Table2 = () => {
   const [serviceType, setServiceType] = useState([]);
   const [shipFrom, setShipFrom] = useState([]);
   const [shipTo, setShipTo] = useState([]);
+  const [inputValues, setInputValues] = useState([]);
+  const [totalPallets, setTotalPallets] = useState(0);
+  const [totalCartons, setTotalCartons] = useState(0);
+  const [totalWeight, setTotalWeight] = useState(0);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -39,12 +45,74 @@ const Table2 = () => {
       setIsChecked(isChecked.filter((e) => (e !== value)));
     }
   }
+   
+// 
+
+  const componentRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'Print Document',
+    onAfterPrint: async () => {
+      await generateAndSavePDF();
+    },
+  });
+
+  const generateAndSavePDF = async () => {
+    // Code to generate and save the PDF
+  };
+
+// 
+
+
+  const handleInputChange = (e, rowIndex, cellIndex) => {
+    const value = e.target.value;
+  
+    setInputValues((prevValues) => {
+      const updatedValues = [...prevValues];
+  
+      if (!updatedValues[rowIndex]) {
+        updatedValues[rowIndex] = [];
+      }
+  
+      updatedValues[rowIndex][cellIndex] = value;
+  
+      return updatedValues;
+    });
+  
+    calculateTotalValues();
+  };
+  
+  const calculateTotalValues = () => {
+    let palletsTotal = 0;
+    let cartonsTotal = 0;
+    let weightTotal = 0;
+
+    inputValues.forEach((row) => {
+      if (row[0]) {
+        palletsTotal += parseInt(row[0], 10);
+      }
+
+      if (row[1]) {
+        cartonsTotal += parseInt(row[1], 10);
+      }
+
+      if (row[2]) {
+        weightTotal += parseInt(row[2], 10);
+      }
+    });
+
+    setTotalPallets(palletsTotal);
+    setTotalCartons(cartonsTotal);
+    setTotalWeight(weightTotal);
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     console.log("Form submitted!");
     const id = Math.floor(100000 + Math.random() * 90000).toString();
 
-	
+    console.log("Input values:", inputValues);
     const orders = {
       name: order,
       date: date,
@@ -103,7 +171,7 @@ const Table2 = () => {
       console.error("Error sending email:", error);
     }
    
-   
+    // console.log("Input values:", values); 
   };
 
   // Rest of your code
@@ -111,6 +179,7 @@ const Table2 = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+      <div ref={componentRef} style={{width: '100%'}}>
         <table
           style={{
             border: "1px solid #482e92",
@@ -539,209 +608,138 @@ const Table2 = () => {
 </table>
 
 
-
-        <table
+<div>
+<table
           style={{ width: "100%", backgroundColor: "#452b93" }}
-          cellspacing="0"
-          cellpadding="0"
+          cellSpacing="0"
+          cellPadding="0"
         >
-          <tr>
-  <td className="row-half-8" style={{ textAlign: "center" }}>
-    <span>Pallets</span>
-  </td>
-  <td className="row-half-8" style={{ textAlign: "center" }}>
-    <span>Cartons</span>
-  </td>
-  <td className="row-half-3" style={{ textAlign: "center" }}>
-    <span>Weight (lbs.)</span>
-  </td>
-  <td className="row-half-4 orange-4" style={{ textAlign: "center" }}>
-    <span>Size (in)</span>
-  </td>
-  <td className="row-half-46" style={{ textAlign: "center" }}>
-  <span>Description</span>
-  <select
-    style={{ width: "100%" }}
-    onChange={(event) => {
-      const selectElement = event.target;
-      const customInput = document.getElementById("custom-input");
+          <thead>
+            <tr>
+              <th className="row-half-8" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+                <span>Pallets</span>
+              </th>
+              <th className="row-half-8" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+                <span>Cartons</span>
+              </th>
+              <th className="row-half-3" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+                <span>Weight (lbs.)</span>
+              </th>
+              <th className="row-half-4 orange-4" style={{ textAlign: "center" }}>
+                <span>Size (in)</span>
+              </th>
+              <th className="row-half-46" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+                <span>Description</span>
+                <select
+                  style={{ width: "100%" }}
+                  onChange={(event) => {
+                    const selectElement = event.target;
+                    const customInput = document.getElementById("custom-input");
 
-      if (selectElement.value === "custom") {
-        if (!customInput) {
-          const input = document.createElement("input");
-          input.id = "custom-input";
-          input.type = "text";
-          input.style.width = "100%";
-          selectElement.parentNode.appendChild(input);
-        }
-      } else {
-        if (customInput) {
-          customInput.parentNode.removeChild(customInput);
-        }
-      }
-    }}
-  >
-    <option value="">-- Select option --</option>
-    <option value="Disposable Curtains">Disposable Curtains</option>
-    <option value="Hospital Track">Hospital Track</option>
-    <option value="custom">Custom</option>
-  </select>
-</td>
+                    if (selectElement.value === "custom") {
+                      if (!customInput) {
+                        const input = document.createElement("input");
+                        input.id = "custom-input";
+                        input.type = "text";
+                        input.style.width = "100%";
+                        selectElement.parentNode.appendChild(input);
+                      }
+                    } else {
+                      if (customInput) {
+                        customInput.parentNode.removeChild(customInput);
+                      }
+                    }
+                  }}
+                >
+                  <option value="">-- Select option --</option>
+                  <option value="Disposable Curtains">Disposable Curtains</option>
+                  <option value="Hospital Track">Hospital Track</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </th>
+              <th className="row-half-10" style={{ textAlign: "center", backgroundColor: "#a8b72f", }}>
+                <span>Class</span>
+                <select
+                  style={{ width: "100%" }}
+                  onChange={(event) => {
+                    const selectElement = event.target;
+                    const customInput = document.getElementById("class-custom-input");
 
-<td className="row-half-10" style={{ textAlign: "center" }}>
-  <span>Class</span>
-  <select
-    style={{ width: "100%" }}
-    onChange={(event) => {
-      const selectElement = event.target;
-      const customInput = document.getElementById("class-custom-input");
-
-      if (selectElement.value === "custom") {
-        if (!customInput) {
-          const input = document.createElement("input");
-          input.id = "class-custom-input";
-          input.type = "text";
-          input.style.width = "100%";
-          selectElement.parentNode.appendChild(input);
-        }
-      } else {
-        if (customInput) {
-          customInput.parentNode.removeChild(customInput);
-        }
-      }
-    }}
-  >
-    <option value="">-- Select option --</option>
-    <option value="85">85</option>
-    <option value="125">125</option>
-    <option value="custom">Custom</option>
-  </select>
-</td>
-
-</tr>
-
-          <tr>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-          </tr>
-          <tr>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-          </tr>
-          <tr>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-          </tr>
-          <tr>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-          </tr>
-          <tr>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-          </tr>
-          <tr>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-8 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-4 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-46 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-            <td className="row-half-10 blue-border">
-              <input type="text" className="same-input" />
-            </td>
-          </tr>
+                    if (selectElement.value === "custom") {
+                      if (!customInput) {
+                        const input = document.createElement("input");
+                        input.id = "class-custom-input";
+                        input.type = "text";
+                        input.style.width = "100%";
+                        selectElement.parentNode.appendChild(input);
+                      }
+                    } else {
+                      if (customInput) {
+                        customInput.parentNode.removeChild(customInput);
+                      }
+                    }
+                  }}
+                >
+                  <option value="">-- Select option --</option>
+                  <option value="85">85</option>
+                  <option value="125">125</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4, 5, 6].map((rowIndex) => (
+              <tr key={rowIndex}>
+                <td className="row-half-8 blue-border">
+                  <input
+                    type="text"
+                    className="same-input"
+                    onChange={(e) => handleInputChange(e, rowIndex, 0)}
+                  />
+                </td>
+                <td className="row-half-8 blue-border">
+                  <input
+                    type="text"
+                    className="same-input"
+                    onChange={(e) => handleInputChange(e, rowIndex, 1)}
+                  />
+                </td>
+                <td className="row-half-4 blue-border">
+                  <input
+                    type="text"
+                    className="same-input"
+                    onChange={(e) => handleInputChange(e, rowIndex, 2)}
+                  />
+                </td>
+                <td className="row-half-4 blue-border">
+                  <input
+                    type="text"
+                    className="same-input"
+                    onChange={(e) => handleInputChange(e, rowIndex, 3)}
+                  />
+                </td>
+                <td className="row-half-46 blue-border">
+                  <input
+                    type="text"
+                    className="same-input"
+                    onChange={(e) => handleInputChange(e, rowIndex, 4)}
+                  />
+                </td>
+                <td className="row-half-10 blue-border">
+                  <input
+                    type="text"
+                    className="same-input"
+                    onChange={(e) => handleInputChange(e, rowIndex, 5)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
-        <table className="table-full" cellSpacing="0" cellPadding="0">
+    </div>
+    <table className="table-full" cellSpacing="0" cellPadding="0">
+        <tbody>
           <tr>
             <td className="row-half-20">
               <span>TOTAL H/U:</span>
@@ -752,8 +750,10 @@ const Table2 = () => {
                   width: "calc(100% - 83px)",
                   border: "0px",
                   backgroundColor: "#f1f4ff",
-                  padding: "6px 0px"
+                  padding: "6px 0px",
                 }}
+                value={totalPallets}
+                readOnly
               />
             </td>
             <td className="row-half-20">
@@ -764,8 +764,10 @@ const Table2 = () => {
                   width: "calc(100% - 83px)",
                   border: "0px",
                   backgroundColor: "#f1f4ff",
-                  padding: "6px 0px"
+                  padding: "6px 0px",
                 }}
+                value={totalCartons}
+                readOnly
               />
             </td>
             <td className="row-half-20">
@@ -776,12 +778,15 @@ const Table2 = () => {
                   width: "calc(100% - 83px)",
                   border: "0px",
                   backgroundColor: "#f1f4ff",
-                  padding: "6px 0px"
+                  padding: "6px 0px",
                 }}
+                value={totalWeight}
+                readOnly
               />
             </td>
           </tr>
-        </table>
+        </tbody>
+      </table>
         <table className="table-full" cellSpacing="0" cellPadding="0">
           <tbody>
             <tr>
@@ -899,14 +904,15 @@ const Table2 = () => {
               </b>
             </td>
           </tr>
+
         </table>
+        </div>
         {/* <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="person@example.com" /> */}
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
+        <button type="submit" onClick={handleSubmit} onSubmit={handlePrint} >Submit </button>
+        <button type="submit"  >Print </button>
+
       </form>
     </div>
   );
 };
-
 export default Table2;
