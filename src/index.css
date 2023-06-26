@@ -3,6 +3,9 @@ body {
     padding: 15px;
     margin: 0;
   }
+  #demoss {
+    padding: 20px;
+  }
   .label:hover input[type="checkbox"] {
     border-color: lightblue;
   }

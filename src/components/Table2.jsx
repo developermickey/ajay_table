@@ -7,6 +7,8 @@ import "jspdf-autotable";
 import { addDoc, collection, doc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 import { app } from "../firebase.config";
 import emailjs from "@emailjs/browser";
+import html2canvas from 'html2canvas';
+
 
 
 
@@ -27,7 +29,6 @@ const Table2 = () => {
   const [totalPallets, setTotalPallets] = useState(0);
   const [totalCartons, setTotalCartons] = useState(0);
   const [totalWeight, setTotalWeight] = useState(0);
-  const [attachment, setAttachment] = useState();
 
 
   const handleChange = (e) => {
@@ -44,9 +45,65 @@ const Table2 = () => {
   }
  
     const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-      content: () => componentRef.current,
-    });
+    // const handlePrint = useReactToPrint({
+    //   content: () => componentRef.current,
+      
+    // });
+
+    // const handlePrint = () => {
+    //   const capture = document.querySelector('#demoss');
+    //   html2canvas(capture).then((canvas) => {
+    //     const imgData = canvas.toDataURL('image/png');
+    //     const doc = new jsPDF('p', 'mm', 'a4');
+    //     const pageWidth = doc.internal.pageSize.getWidth();
+    //     const pageHeight = doc.internal.pageSize.getHeight();
+    //     const canvasAspectRatio = canvas.width / canvas.height;
+    //     const pdfAspectRatio = pageWidth / pageHeight;
+    //     let width, height;
+    
+    //     if (canvasAspectRatio >= pdfAspectRatio) {
+    //       width = pageWidth;
+    //       height = canvas.height * (pageWidth / canvas.width);
+    //     } else {
+    //       height = pageHeight;
+    //       width = canvas.width * (pageHeight / canvas.height);
+    //     }
+    
+    //     doc.addImage(imgData, 'PNG', 0, 0, width, height);
+    //     doc.save('ott.pdf');
+    //   });
+    // };
+       
+
+    const handlePrint = () => {
+      const capture = document.querySelector('#demoss');
+      html2canvas(capture).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const canvasAspectRatio = canvas.width / canvas.height;
+        const pdfAspectRatio = pageWidth / pageHeight;
+        let width, height;
+    
+        if (canvasAspectRatio >= pdfAspectRatio) {
+          width = pageWidth;
+          height = canvas.height * (pageWidth / canvas.width);
+        } else {
+          height = pageHeight;
+          width = canvas.width * (pageHeight / canvas.height);
+        }
+    
+        doc.addImage(imgData, 'PNG', 0, 0, width, height);
+        doc.save('ott.pdf');
+  
+      });
+    };
+    
+
+ 
+
+
   const handleInputChange = (e, rowIndex, cellIndex) => {
     const value = e.target.value;
   
@@ -108,22 +165,20 @@ const Table2 = () => {
       serviceType: serviceType,
       shipFrom: shipFrom,
       shipTo: shipTo,
-      attachment: attachment,
-
     };
 
     if (order) {
       console.log(orders);
       setDoc(doc(db, "order_data", id), orders);
     }
-    const pdf = new jsPDF();
-    const tableData = Object.entries(orders).map(([key, value]) => [key, value]);
-    pdf.autoTable({
-      head: [["Field", "Value"]],
-      body: tableData,
-    });
-    pdf.save("form.pdf");
-    setAttachment(pdf);
+    // const pdf = new jsPDF();
+    // const tableData = Object.entries(orders).map(([key, value]) => [key, value]);
+    // pdf.autoTable({
+    //   head: [["Field", "Value"]],
+    //   body: tableData,
+    // });
+    // pdf.save("form.pdf");
+    // setAttachment(pdf);
 
 
     // Send email
@@ -140,7 +195,6 @@ const Table2 = () => {
       serviceType: serviceType,
       shipFrom: shipFrom,
       shipTo: shipTo,
-      attachment: attachment,
       
 
     };
@@ -164,7 +218,7 @@ const Table2 = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form  id="demoss" onSubmit={handleSubmit}>
       <div ref={componentRef} style={{width: '100%'}}>
         <table
           style={{
