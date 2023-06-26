@@ -1,26 +1,12 @@
-import { saveAs } from 'file-saver';
+
 import React, { useState, useRef } from "react";
 import { useReactToPrint } from 'react-to-print';
 import FedEx_Freight from "./OTRT.jpg";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDocs,
-  getFirestore,
-  setDoc
-} from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 import { app } from "../firebase.config";
 import emailjs from "@emailjs/browser";
-
-
-
-
-
-
-
 
 
 
@@ -41,8 +27,7 @@ const Table2 = () => {
   const [totalPallets, setTotalPallets] = useState(0);
   const [totalCartons, setTotalCartons] = useState(0);
   const [totalWeight, setTotalWeight] = useState(0);
-
-
+  const [attachment, setAttachment] = useState();
 
 
   const handleChange = (e) => {
@@ -62,52 +47,6 @@ const Table2 = () => {
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
     });
-
-
-    const handleSendEmail = () => {
-      const doc = new jsPDF();
-    
-      doc.addImage(componentRef.current, 'JPEG', 10, 10, 190, 0);
-    
-      const pdfDataUri = doc.output('datauristring');
-    
-      // Convert data URI to a Blob
-      const pdfBlob = dataURItoBlob(pdfDataUri);
-    
-      // Create a file object from the Blob
-      const pdfFile = new File([pdfBlob], 'document.pdf', { type: 'application/pdf' });
-    
-      // Prepare the email parameters
-      const emailParams = {
-        to_email: 'mukesh.adlivetech@gmail.com',
-        // Add the PDF file as an attachment
-        attachment: pdfFile,
-      };
-    
-      // Send the email using emailjs
-      emailjs.send('service_67sdcul', 'template_woh3a2i', emailParams, 'xnoXqBMQa8cUpnPHk')
-        .then((response) => {
-          console.log('Email sent successfully!', response.status, response.text);
-        })
-        .catch((error) => {
-          console.error('Error sending email:', error);
-        });
-    };
-    
-    // Function to convert Data URI to Blob
-    const dataURItoBlob = (dataURI) => {
-      const byteString = atob(dataURI.split(',')[1]);
-      const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-      const ab = new ArrayBuffer(byteString.length);
-      const ia = new Uint8Array(ab);
-      for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-      }
-      return new Blob([ab], { type: mimeString });
-    };
-    
-
-
   const handleInputChange = (e, rowIndex, cellIndex) => {
     const value = e.target.value;
   
@@ -169,6 +108,7 @@ const Table2 = () => {
       serviceType: serviceType,
       shipFrom: shipFrom,
       shipTo: shipTo,
+      attachment: attachment,
 
     };
 
@@ -183,15 +123,8 @@ const Table2 = () => {
       body: tableData,
     });
     pdf.save("form.pdf");
-  //    const pdf = new jsPDF();
-  // const tableData = Object.entries(orders).map(([key, value]) => [key, value]);
-  // pdf.autoTable({
-  //   head: [['Field', 'Value']],
-  //   body: tableData,
-  // });
+    setAttachment(pdf);
 
-    const pdfBlob = pdf.output('blob');
-  saveAs(pdfBlob, 'form.pdf');
 
     // Send email
     const templateParams = {
@@ -207,6 +140,8 @@ const Table2 = () => {
       serviceType: serviceType,
       shipFrom: shipFrom,
       shipTo: shipTo,
+      attachment: attachment,
+      
 
     };
 
@@ -215,7 +150,7 @@ const Table2 = () => {
         "service_67sdcul",
         "template_woh3a2i",
         templateParams,
-        "xnoXqBMQa8cUpnPHk"
+        "xnoXqBMQa8cUpnPHk",
       );
       console.log("Email sent successfully!");
     } catch (error) {
@@ -223,18 +158,9 @@ const Table2 = () => {
     }
    
     // console.log("Input values:", values); 
-
-
-
-
-
-
   };
 
   // Rest of your code
-
-
- 
 
   return (
     <div>
@@ -437,8 +363,9 @@ const Table2 = () => {
                 width: "calc(100% - 0px)",
                 border: "1px solid #452b93",
                 padding: "6px 0px",
-                color: "#949494",
-              }} >
+                color: "#452b93"
+              }}
+            >
               <span>Ship From :</span>
               <br />
               <select style={{ marginTop: "15px", width: "100%" }} value={shipFrom}
@@ -970,9 +897,8 @@ const Table2 = () => {
         <button type="submit" onClick={handleSubmit} >
           Submit
         </button>
-       
-      <button onClick={handlePrint}>Print</button>
-      <button onClick={handleSendEmail}>Send Email</button>
+        <button onClick={handlePrint}>Print this out!</button>
+
       </form>
     </div>
   );
