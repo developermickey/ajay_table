@@ -30,14 +30,14 @@ body {
       position: relative;
       display: block;
       top: 55px;
-      left: 25px;
+      left:0;
       
   }
   .date-div b {
       display: inline-block;
-      font-size: 16px;
+      font-size: 14px;
       color: #929292;
-      font-weight: 700;
+      font-weight: 500;
   }
   .date-div {
       vertical-align: top;
@@ -53,13 +53,13 @@ body {
       border: 5px solid #929292;
   }
   .required-service b {
-      font-size: 18px;
-      font-weight: 700;
-      color: #929292;
+      font-size: 14px;
+      font-weight: 500;
+      color: #929292 !important;
   }
   .required-service label {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 500;
       color: #929292;
   }
   .blue-table-color {
@@ -146,7 +146,7 @@ body {
   }
   .row-half-100 span {
       display: inline-block;
-      font-size: 16px;
+      font-size: 14px;
       color: #929292;
       font-weight: 400;
   }

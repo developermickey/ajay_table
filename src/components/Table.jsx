@@ -39,6 +39,7 @@ const Table = () => {
 								border: "0px",
 								backgroundColor: "#f1f4ff",
 								padding: "6px 0px",
+								color: "#949192",
 							}}
 						/>
 					</td>
