@@ -5,10 +5,10 @@ import FedEx_Freight from "./OTRT.jpg";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { addDoc, collection, doc, getDocs, getFirestore, setDoc } from "firebase/firestore";
-import { app } from "../firebase.config";
 import firebase from "../firebase.config";
 import emailjs from "@emailjs/browser";
 import html2canvas from 'html2canvas';
+import app from '../firebase.config';
 
 
 const Table2 = () => {
@@ -101,65 +101,6 @@ const Table2 = () => {
 
 
 
-    // const handlePrint = () => {
-    //   const capture = document.querySelector('#demoss');
-    //   html2canvas(capture).then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //     const doc = new jsPDF('p', 'mm', 'a4');
-    //     const pageWidth = doc.internal.pageSize.getWidth();
-    //     const pageHeight = doc.internal.pageSize.getHeight();
-    //     const canvasAspectRatio = canvas.width / canvas.height;
-    //     const pdfAspectRatio = pageWidth / pageHeight;
-    //     let width, height;
-    
-    //     if (canvasAspectRatio >= pdfAspectRatio) {
-    //       width = pageWidth;
-    //       height = canvas.height * (pageWidth / canvas.width);
-    //     } else {
-    //       height = pageHeight;
-    //       width = canvas.width * (pageHeight / canvas.height);
-    //     }
-    
-    //     doc.addImage(imgData, 'PNG', 0, 0, width, height);
-    //     doc.save('ott.pdf');
-    
-    //     const user = firebase.auth().currentUser;
-    //     const storageRef = firebase.storage().ref();
-    //     const pdfRef = storageRef.child('ott.pdf');
-    //     const pdfData = new Blob([doc.output()], { type: 'application/pdf' });
-    
-    //     pdfRef.put(pdfData)
-    //       .then(() => {
-    //         const email = {
-    //           to: user.email,
-    //           message: {
-    //             subject: 'Your OTT PDF',
-    //             text: 'Please find the attached PDF file with your OTT data.',
-    //             attachments: [
-    //               {
-    //                 filename: 'ott.pdf',
-    //                 contentType: 'application/pdf',
-    //                 path: pdfRef.fullPath
-    //               }
-    //             ]
-    //           }
-    //         };
-    
-    //         firebase.functions().httpsCallable('sendEmail')(email)
-    //           .then(() => {
-    //             console.log('Email sent successfully.');
-    //           })
-    //           .catch((error) => {
-    //             console.error('Error sending email:', error);
-    //           });
-    //       })
-    //       .catch((error) => {
-    //         console.error('Error uploading PDF:', error);
-    //       });
-    //   });
-    // };
-    
-
     const handlePrint = () => {
       const capture = document.querySelector('#demoss');
       html2canvas(capture).then((canvas) => {
@@ -182,42 +123,100 @@ const Table2 = () => {
         doc.addImage(imgData, 'PNG', 0, 0, width, height);
         doc.save('ott.pdf');
     
-        const dataUri = doc.output('dataurlstring');
-        const link = document.createElement('a');
-        link.href = dataUri;
-        link.target = '_blank';
-        link.download = 'ott.pdf';
-        link.click();
+        // const user = firebase.auth.currentUser;
+        const storageRef = firebase.storage.ref;
+        const pdfRef = storageRef.child('ott.pdf');
+        const pdfData = new Blob([doc.output()], { type: 'application/pdf' });
+    
+        pdfRef.put(pdfData)
+          .then(() => {
+            const email = {
+              to: "mukeshpathak345@gmail.com",
+              message: {
+                subject: 'Your OTT PDF',
+                text: 'Please find the attached PDF file with your OTT data.',
+                attachments: [
+                  {
+                    filename: 'ott.pdf',
+                    contentType: 'application/pdf',
+                    path: pdfRef.fullPath
+                  }
+                ]
+              }
+            };
+            firebase.functions().httpsCallable('sendEmail')(email)
+              .then(() => {
+                console.log('Email sent successfully.');
+              })
+              .catch((error) => {
+                console.error('Error sending email:', error);
+              });
+          })
+          .catch((error) => {
+            console.error('Error uploading PDF:', error);
+          });
       });
     };
+    
+
+    // const handlePrint = () => {
+    //   const capture = document.querySelector('#demoss');
+    //   html2canvas(capture).then((canvas) => {
+    //     const imgData = canvas.toDataURL('image/png');
+    //     const doc = new jsPDF('p', 'mm', 'a4');
+    //     const pageWidth = doc.internal.pageSize.getWidth();
+    //     const pageHeight = doc.internal.pageSize.getHeight();
+    //     const canvasAspectRatio = canvas.width / canvas.height;
+    //     const pdfAspectRatio = pageWidth / pageHeight;
+    //     let width, height;
+    
+    //     if (canvasAspectRatio >= pdfAspectRatio) {
+    //       width = pageWidth;
+    //       height = canvas.height * (pageWidth / canvas.width);
+    //     } else {
+    //       height = pageHeight;
+    //       width = canvas.width * (pageHeight / canvas.height);
+    //     }
+    
+    //     doc.addImage(imgData, 'PNG', 0, 0, width, height);
+    //     doc.save('ott.pdf');
+    
+    //     const dataUri = doc.output('dataurlstring');
+    //     const link = document.createElement('a');
+    //     link.href = dataUri;
+    //     link.target = '_blank';
+    //     link.download = 'ott.pdf';
+    //     link.click();
+    //   });
+    // };
 
 
-  function handleInputChange(e, rowIndex, columnIndex) {
-    const inputValue = e.target.value !== '' ? parseFloat(e.target.value) : 0;
   
-    // Update the total weight
-    if (columnIndex === 2) {
-      console.log(columnIndex)
-      setTotalWeight((prevTotal) => prevTotal + inputValue);
-    }
-  
-    // Update the total cartons
-    if (columnIndex === 1) {
-   
-      setTotalCartons((prevTotal) => prevTotal + inputValue);
-    }
-  
-    // Update the total pallets
-    if (columnIndex === 0) {
-      
-      setTotalPallets((prevTotal) => prevTotal + inputValue);
-    }
-  }
-  
-
-
-
-
+    const handleInputChange = (e, rowIndex, columnIndex) => {
+      const inputValue = e.target.value !== '' ? parseFloat(e.target.value) : 0;
+      const inputNumber = inputValue * 1;
+    
+      // Update the total weight
+      if (columnIndex === 2) {
+        setTotalWeight((prevTotal) => {
+          const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
+          return prevTotal + diff;
+        });
+      }
+      if (columnIndex === 1) {
+        setTotalCartons((prevTotal) => {
+          const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
+          return prevTotal + diff;
+        });
+      }
+      if (columnIndex === 0) {
+        setTotalPallets((prevTotal) => {
+          const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
+          return prevTotal + diff;
+        });
+      }
+    };
+    
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -806,42 +805,45 @@ const Table2 = () => {
               <tr key={rowIndex}>
                 <td className="row-half-8 blue-border">
                   <input
-                    type="text"
+                    type="number"
                     className="same-input"
+                    defaultValue={0}
                     onChange={(e) => handleInputChange(e, rowIndex, 0)}
                   />
                 </td>
                 <td className="row-half-8 blue-border">
                   <input
-                    type="text"
+                    type="number"
                     className="same-input"
+                    defaultValue={0}
                     onChange={(e) => handleInputChange(e, rowIndex, 1)}
                   />
                 </td>
                 <td className="row-half-4 blue-border">
                   <input
-                    type="text"
+                    type="number"
                     className="same-input"
+                    defaultValue={0}
                     onChange={(e) => handleInputChange(e, rowIndex, 2)}
                   />
                 </td>
                 <td className="row-half-4 blue-border">
                   <input
-                    type="text"
+                    type="number"
                     className="same-input"
                     onChange={(e) => handleInputChange(e, rowIndex, 3)}
                   />
                 </td>
                 <td className="row-half-46 blue-border">
                   <input
-                    type="text"
+                    type="number"
                     className="same-input"
                     onChange={(e) => handleInputChange(e, rowIndex, 4)}
                   />
                 </td>
                 <td className="row-half-10 blue-border">
                   <input
-                    type="text"
+                    type="number"
                     className="same-input"
                     onChange={(e) => handleInputChange(e, rowIndex, 5)}
                   />
@@ -857,7 +859,7 @@ const Table2 = () => {
             <td className="row-half-20">
               <span>TOTAL H/U:</span>
               <input
-                type="text"
+                type="number"
                 style={{
                   marginTop: '13px',
                   width: 'calc(100% - 83px)',
@@ -871,7 +873,7 @@ const Table2 = () => {
             </td>
             <td className="row-half-20">
               <input
-                type="text"
+                type="number"
                 style={{
                   marginTop: '13px',
                   width: 'calc(100% - 83px)',
@@ -885,7 +887,7 @@ const Table2 = () => {
             </td>
             <td className="row-half-20">
               <input
-                type="text"
+                type="number"
                 style={{
                   marginTop: '13px',
                   width: 'calc(100% - 83px)',
