@@ -41,66 +41,7 @@ const Table2 = () => {
       setIsChecked(isChecked.filter((e) => (e !== value)));
     }
   }
- 
     const componentRef = useRef();
-    // const handlePrint = useReactToPrint({
-    //   content: () => componentRef.current,
-      
-    // });
-
-    // const handlePrint = () => {
-    //   const capture = document.querySelector('#demoss');
-    //   html2canvas(capture).then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //     const doc = new jsPDF('p', 'mm', 'a4');
-    //     const pageWidth = doc.internal.pageSize.getWidth();
-    //     const pageHeight = doc.internal.pageSize.getHeight();
-    //     const canvasAspectRatio = canvas.width / canvas.height;
-    //     const pdfAspectRatio = pageWidth / pageHeight;
-    //     let width, height;
-    
-    //     if (canvasAspectRatio >= pdfAspectRatio) {
-    //       width = pageWidth;
-    //       height = canvas.height * (pageWidth / canvas.width);
-    //     } else {
-    //       height = pageHeight;
-    //       width = canvas.width * (pageHeight / canvas.height);
-    //     }
-    
-    //     doc.addImage(imgData, 'PNG', 0, 0, width, height);
-    //     doc.save('ott.pdf');
-    //   });
-    // };
-       
-
-    // const handlePrint = () => {
-    //   const capture = document.querySelector('#demoss');
-    //   html2canvas(capture).then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //     const doc = new jsPDF('p', 'mm', 'a4');
-    //     const pageWidth = doc.internal.pageSize.getWidth();
-    //     const pageHeight = doc.internal.pageSize.getHeight();
-    //     const canvasAspectRatio = canvas.width / canvas.height;
-    //     const pdfAspectRatio = pageWidth / pageHeight;
-    //     let width, height;
-    
-    //     if (canvasAspectRatio >= pdfAspectRatio) {
-    //       width = pageWidth;
-    //       height = canvas.height * (pageWidth / canvas.width);
-    //     } else {
-    //       height = pageHeight;
-    //       width = canvas.width * (pageHeight / canvas.height);
-    //     }
-    
-    //     doc.addImage(imgData, 'PNG', 0, 0, width, height);
-    //     doc.save('ott.pdf');
-  
-    //   });
-    // };
-    
-
-
-
     const handlePrint = () => {
       const capture = document.querySelector('#demoss');
       html2canvas(capture).then((canvas) => {
@@ -119,11 +60,9 @@ const Table2 = () => {
           height = pageHeight;
           width = canvas.width * (pageHeight / canvas.height);
         }
-    
         doc.addImage(imgData, 'PNG', 0, 0, width, height);
         doc.save('ott.pdf');
-    
-        // const user = firebase.auth.currentUser;
+  
         const storageRef = firebase.storage.ref;
         const pdfRef = storageRef.child('ott.pdf');
         const pdfData = new Blob([doc.output()], { type: 'application/pdf' });
@@ -157,66 +96,79 @@ const Table2 = () => {
           });
       });
     };
+  
+    // const handleInputChange = (e, rowIndex, columnIndex) => {
+    //   const inputValue = e.target.value !== '' ? parseFloat(e.target.value) : 0;
+    //   const inputNumber = inputValue * 1;
+    
+    //   // Update the total weight
+    //   if (columnIndex === 2) {
+    //     setTotalWeight((prevTotal) => {
+    //       const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
+    //       return prevTotal + diff;
+    //     });
+    //   }
+    //   if (columnIndex === 1) {
+    //     setTotalCartons((prevTotal) => {
+    //       const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
+    //       return prevTotal + diff;
+    //     });
+    //   }
+    //   if (columnIndex === 0) {
+    //     setTotalPallets((prevTotal) => {
+    //       const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
+    //       return prevTotal + diff;
+    //     });
+    //   }
+    // };
     
 
-    // const handlePrint = () => {
-    //   const capture = document.querySelector('#demoss');
-    //   html2canvas(capture).then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //     const doc = new jsPDF('p', 'mm', 'a4');
-    //     const pageWidth = doc.internal.pageSize.getWidth();
-    //     const pageHeight = doc.internal.pageSize.getHeight();
-    //     const canvasAspectRatio = canvas.width / canvas.height;
-    //     const pdfAspectRatio = pageWidth / pageHeight;
-    //     let width, height;
-    
-    //     if (canvasAspectRatio >= pdfAspectRatio) {
-    //       width = pageWidth;
-    //       height = canvas.height * (pageWidth / canvas.width);
-    //     } else {
-    //       height = pageHeight;
-    //       width = canvas.width * (pageHeight / canvas.height);
-    //     }
-    
-    //     doc.addImage(imgData, 'PNG', 0, 0, width, height);
-    //     doc.save('ott.pdf');
-    
-    //     const dataUri = doc.output('dataurlstring');
-    //     const link = document.createElement('a');
-    //     link.href = dataUri;
-    //     link.target = '_blank';
-    //     link.download = 'ott.pdf';
-    //     link.click();
-    //   });
+    // const handleInputChange = (event, rowIndex, columnIndex) => {
+    //   const value = parseInt(event.target.value, 10);
+    //   const updatedTotalPallets = [...Array(6)].reduce((sum, _, index) => {
+    //     const inputValue = parseInt(document.getElementById(`pallets-${index}`).value, 10);
+    //     return sum + (index === rowIndex ? value : inputValue);
+    //   }, 0);
+    //   const updatedTotalCartons = [...Array(6)].reduce((sum, _, index) => {
+    //     const inputValue = parseInt(document.getElementById(`cartons-${index}`).value, 10);
+    //     return sum + (index === rowIndex ? value : inputValue);
+    //   }, 0);
+    //   const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
+    //     const inputValue = parseInt(document.getElementById(`weight-${index}`).value, 10);
+    //     return sum + (index === rowIndex ? value : inputValue);
+    //   }, 0);
+  
+    //   setTotalPallets(updatedTotalPallets);
+    //   setTotalCartons(updatedTotalCartons);
+    //   setTotalWeight(updatedTotalWeight);
     // };
 
 
-  
-    const handleInputChange = (e, rowIndex, columnIndex) => {
-      const inputValue = e.target.value !== '' ? parseFloat(e.target.value) : 0;
-      const inputNumber = inputValue * 1;
+
+
+    const handleInputChange = (event, rowIndex, columnIndex) => {
+      const value = parseInt(event.target.value, 10);
     
-      // Update the total weight
-      if (columnIndex === 2) {
-        setTotalWeight((prevTotal) => {
-          const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
-          return prevTotal + diff;
-        });
-      }
-      if (columnIndex === 1) {
-        setTotalCartons((prevTotal) => {
-          const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
-          return prevTotal + diff;
-        });
-      }
-      if (columnIndex === 0) {
-        setTotalPallets((prevTotal) => {
-          const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
-          return prevTotal + diff;
-        });
-      }
+      const updatedTotalPallets = [...Array(6)].reduce((sum, _, index) => {
+        const inputValue = parseInt(document.getElementById(`pallets-${index}`).value, 10);
+        return sum + (index === rowIndex ? value : inputValue);
+      }, 0);
+    
+      const updatedTotalCartons = [...Array(6)].reduce((sum, _, index) => {
+        const inputValue = parseInt(document.getElementById(`cartons-${index}`).value, 10);
+        return sum + (index === rowIndex ? value : inputValue);
+      }, 0);
+    
+      const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
+        const inputValue = parseInt(document.getElementById(`weight-${index}`).value, 10);
+        return sum + (index === rowIndex ? value : inputValue);
+      }, 0);
+    
+      setTotalPallets(updatedTotalPallets);
+      setTotalCartons(updatedTotalCartons);
+      setTotalWeight(updatedTotalWeight);
     };
-    
+  
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -721,137 +673,136 @@ const Table2 = () => {
 
 
 <div>
-<table
-          style={{ width: "100%", backgroundColor: "#452b93" }}
-          cellSpacing="0"
-          cellPadding="0"
-        >
-          <thead>
-            <tr>
-              <th className="row-half-8" style={{ textAlign: "center", backgroundColor: "#a8b72f"}}>
-                <span>Pallets</span>
-              </th>
-              <th className="row-half-8" style={{ textAlign: "center", backgroundColor: "#a8b72f" }}>
-                <span>Cartons</span>
-              </th>
-              <th className="row-half-3" style={{ textAlign: "center", backgroundColor: "#a8b72f" }}>
-                <span>Weight (lbs.)</span>
-              </th>
-              <th className="row-half-4 orange-4" style={{ textAlign: "center", backgroundColor: "#a8b72f" }}>
-                <span>Size (in)</span>
-              </th>
-              <th className="row-half-46" style={{ textAlign: "center", backgroundColor: "#a8b72f"}}>
-                <span>Description</span>
-                <select
-                  style={{ width: "100%" }}
-                  onChange={(event) => {
-                    const selectElement = event.target;
-                    const customInput = document.getElementById("custom-input");
+<table style={{ width: '100%', backgroundColor: '#452b93' }} cellSpacing="0" cellPadding="0">
+        <thead>
+          <tr>
+            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+              <span>Pallets</span>
+            </th>
+            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+              <span>Cartons</span>
+            </th>
+            <th className="row-half-3" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+              <span>Weight (lbs.)</span>
+            </th>
+            <th className="row-half-4 orange-4" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+              <span>Size (in)</span>
+            </th>
+            <th className="row-half-46" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+              <span>Description</span>
+              <select
+                style={{ width: '100%' }}
+                onChange={(event) => {
+                  const selectElement = event.target;
+                  const customInput = document.getElementById('custom-input');
 
-                    if (selectElement.value === "custom") {
-                      if (!customInput) {
-                        const input = document.createElement("input");
-                        input.id = "custom-input";
-                        input.type = "text";
-                        input.style.width = "100%";
-                        selectElement.parentNode.appendChild(input);
-                      }
-                    } else {
-                      if (customInput) {
-                        customInput.parentNode.removeChild(customInput);
-                      }
+                  if (selectElement.value === 'custom') {
+                    if (!customInput) {
+                      const input = document.createElement('input');
+                      input.id = 'custom-input';
+                      input.type = 'text';
+                      input.style.width = '100%';
+                      selectElement.parentNode.appendChild(input);
                     }
-                  }}
-                >
-                  <option value="">-- Select option --</option>
-                  <option value="Disposable Curtains">Disposable Curtains</option>
-                  <option value="Hospital Track">Hospital Track</option>
-                  <option value="custom">Custom</option>
-                </select>
-              </th>
-              <th className="row-half-10" style={{ textAlign: "center", backgroundColor: "#a8b72f" }}>
-                <span>Class</span>
-                <select
-                  style={{ width: "100%" }}
-                  onChange={(event) => {
-                    const selectElement = event.target;
-                    const customInput = document.getElementById("class-custom-input");
+                  } else {
+                    if (customInput) {
+                      customInput.parentNode.removeChild(customInput);
+                    }
+                  }
+                }}
+              >
+                <option value="">-- Select option --</option>
+                <option value="Disposable Curtains">Disposable Curtains</option>
+                <option value="Hospital Track">Hospital Track</option>
+                <option value="custom">Custom</option>
+              </select>
+            </th>
+            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+              <span>Class</span>
+              <select
+                style={{ width: '100%' }}
+                onChange={(event) => {
+                  const selectElement = event.target;
+                  const customInput = document.getElementById('class-custom-input');
 
-                    if (selectElement.value === "custom") {
-                      if (!customInput) {
-                        const input = document.createElement("input");
-                        input.id = "class-custom-input";
-                        input.type = "text";
-                        input.style.width = "100%";
-                        selectElement.parentNode.appendChild(input);
-                      }
-                    } else {
-                      if (customInput) {
-                        customInput.parentNode.removeChild(customInput);
-                      }
+                  if (selectElement.value === 'custom') {
+                    if (!customInput) {
+                      const input = document.createElement('input');
+                      input.id = 'class-custom-input';
+                      input.type = 'text';
+                      input.style.width = '100%';
+                      selectElement.parentNode.appendChild(input);
                     }
-                  }}
-                >
-                  <option value="">-- Select option --</option>
-                  <option value="85">85</option>
-                  <option value="125">125</option>
-                  <option value="custom">Custom</option>
-                </select>
-              </th>
+                  } else {
+                    if (customInput) {
+                      customInput.parentNode.removeChild(customInput);
+                    }
+                  }
+                }}
+              >
+                <option value="">-- Select option --</option>
+                <option value="85">85</option>
+                <option value="125">125</option>
+                <option value="custom">Custom</option>
+              </select>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {[...Array(6)].map((_, rowIndex) => (
+            <tr key={rowIndex}>
+              <td className="row-half-8 blue-border">
+                <input
+                  type="text"
+                  className="same-input"
+                  defaultValue={0}
+                  id={`pallets-${rowIndex}`}
+                  onChange={(e) => handleInputChange(e, rowIndex, 0)}
+                />
+              </td>
+              <td className="row-half-8 blue-border">
+                <input
+                  type="text"
+                  className="same-input"
+                  defaultValue={0}
+                  id={`cartons-${rowIndex}`}
+                  onChange={(e) => handleInputChange(e, rowIndex, 1)}
+                />
+              </td>
+              <td className="row-half-4 blue-border">
+                <input
+                  type="text"
+                  className="same-input"
+                  defaultValue={0}
+                  id={`weight-${rowIndex}`}
+                  onChange={(e) => handleInputChange(e, rowIndex, 2)}
+                />
+              </td>
+              <td className="row-half-4 blue-border">
+                <input
+                  type="text"
+                  className="same-input"
+                  onChange={(e) => handleInputChange(e, rowIndex, 3)}
+                />
+              </td>
+              <td className="row-half-46 blue-border">
+                <input
+                  type="text"
+                  className="same-input"
+                  onChange={(e) => handleInputChange(e, rowIndex, 4)}
+                />
+              </td>
+              <td className="row-half-10 blue-border">
+                <input
+                  type="text"
+                  className="same-input"
+                  onChange={(e) => handleInputChange(e, rowIndex, 5)}
+                />
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {[1, 2, 3, 4, 5, 6].map((rowIndex) => (
-              <tr key={rowIndex}>
-                <td className="row-half-8 blue-border">
-                  <input
-                    type="number"
-                    className="same-input"
-                    defaultValue={0}
-                    onChange={(e) => handleInputChange(e, rowIndex, 0)}
-                  />
-                </td>
-                <td className="row-half-8 blue-border">
-                  <input
-                    type="number"
-                    className="same-input"
-                    defaultValue={0}
-                    onChange={(e) => handleInputChange(e, rowIndex, 1)}
-                  />
-                </td>
-                <td className="row-half-4 blue-border">
-                  <input
-                    type="number"
-                    className="same-input"
-                    defaultValue={0}
-                    onChange={(e) => handleInputChange(e, rowIndex, 2)}
-                  />
-                </td>
-                <td className="row-half-4 blue-border">
-                  <input
-                    type="number"
-                    className="same-input"
-                    onChange={(e) => handleInputChange(e, rowIndex, 3)}
-                  />
-                </td>
-                <td className="row-half-46 blue-border">
-                  <input
-                    type="number"
-                    className="same-input"
-                    onChange={(e) => handleInputChange(e, rowIndex, 4)}
-                  />
-                </td>
-                <td className="row-half-10 blue-border">
-                  <input
-                    type="number"
-                    className="same-input"
-                    onChange={(e) => handleInputChange(e, rowIndex, 5)}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
     </div>
     <table className="table-full" cellSpacing="0" cellPadding="0">
         <tbody>
@@ -1022,12 +973,10 @@ const Table2 = () => {
 
         </table>
         </div>
-        {/* <input type="text" name="email_from" id="emailFrom" className="email__from" placeholder="person@example.com" /> */}
-        <button type="submit" onClick={handleSubmit} >
+        <button style={{display: "none"}}type="submit" onClick={handleSubmit} >
           Submit
         </button>
-        <button onClick={handlePrint}>Print this out!</button>
-
+        <button onClick={handlePrint}>Submit</button>
       </form>
     </div>
   );
