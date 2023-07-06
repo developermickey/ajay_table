@@ -854,9 +854,9 @@ const Table2 = () => {
                 readOnly
               />
             </td>
-            <td className="row-half-20 orange-4" style={{border: "none !important;"}}></td>
+            <td className="row-half-20 orange-4" style={{border: 'none'}}></td>
             <td className="row-half-46 orange-4"></td>
-            <td className="row-half-20 orange-4"></td>
+            <td className="row-half-20 orange-4" style={{border: 'none'}}></td>
             
           </tr>
         </tbody>
