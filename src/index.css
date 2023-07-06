@@ -39,35 +39,37 @@ body {
   .date-div b {
       display: inline-block;
       font-size: 14px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 500;
   }
   .date-div {
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
+      padding: 5px;
   }
   .date-div.second-date {
       width: 36%;
   }
 
-  /* #929292 */
+  /* #3e3e3e */
   .required-service {   
       vertical-align: top;
-      border: 5px solid #929292;
+      border: 1px solid #3e3e3e;
+      padding: 5px;
   }
   .required-service b {
       font-size: 14px;
       font-weight: 500;
-      color: #929292 !important;
+      color: #3e3e3e !important;
   }
   .required-service label {
       font-size: 14px;
       font-weight: 500;
-      color: #929292;
+      color: #3e3e3e;
   }
   .blue-table-color {
       width: 100%;
-      background-color: #929292;
+      background-color: #3e3e3e;
   }
   .table-half-50{
       width:50%;color: #fff; 
@@ -76,86 +78,86 @@ body {
   }
   .width-30 {
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 30%;
   }
   .width-20{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 20%;
   }
   .width-20 span, .width-30 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .width-8{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 8%;
   }
   .width-12{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 12%;
   }
   .width-12 span, .width-8 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-50{
-      vertical-align: top;border: 1px solid #929292;width: 50%;
+      vertical-align: top;border: 1px solid #3e3e3e;width: 50%;
   }
   .row-half-50 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-25{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 25%;
   }
   .row-half-14{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 14%;
   }
   .row-half-11{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 11%;
   }
   .row-half-25 span, .row-half-14 span, .row-half-11 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-50 label {
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-100{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 100%;
   }
   .row-half-100 span {
       display: inline-block;
       font-size: 14px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .blue-strip-row-100{
       width: 100%;
-      background-color: #929292;
+      background-color: #3e3e3e;
   }
   .blue-strip-text{
       width:100%;
@@ -165,78 +167,78 @@ body {
   }
   .row-half-38{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 38%;
   }
   .row-half-22{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 32%;
   }
   .row-half-40{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 32%;
   }
   .row-half-40 span, .row-half-22 span, .row-half-38 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-41{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 41%;
   }
   .row-half-9{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 9%;
   }
   .row-half-13{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 13%;
   }
   .row-half-12{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 12%;
   }
   .row-half-16{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 16%;
   }
   .row-half-16 span, .row-half-12 span, .row-half-13 span, .row-half-9 span, .row-half-41 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .freight-charge-left{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 25%;
-      color: #929292;
+      color: #3e3e3e;
   }
   .freight-charge-middle{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 25%;
       border-right: 0;
   }
   .freight-charge-right{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 50%;
       border-left: 0px;
   }
   .freight-charge-left label{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 700;
   }
   .left-middle-text{
@@ -253,52 +255,52 @@ body {
   .left-middle-text label{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 700;
   }
   .right-middle-text b{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 700;
   }
   .freight-charge-right span {
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .freight-charge-right b {
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 700;
   }
   .freight-charge-right label {
       display: inline-block;
       font-size: 14px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-37{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 37%;
   }
   .row-half-7{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 7%;
   }
   .row-half-17{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 17%;
   }
   .row-half-37 span, .row-half-7 span, .row-half-17 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-8{
@@ -353,7 +355,7 @@ body {
       padding: 6px 0px;
   }
   .blue-border {
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       border-top: 0;
   }
   .row-half-12.without-input {
@@ -364,7 +366,7 @@ body {
   }
   .row-half-20{
       vertical-align: top;
-      border: 1px solid #929292;
+      border: 1px solid #3e3e3e;
       width: 20%;
       border-top: 0;
   }
@@ -378,7 +380,7 @@ body {
   .row-half-20 span{
       display: inline-block;
       font-size: 16px;
-      color: #929292;
+      color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-80 span{
@@ -422,7 +424,7 @@ body {
       font-size: 14px;
       color: #ffffff;
       font-weight: 700;
-      background-color: #929292;
+      background-color: #3e3e3e;
       width: 100%;
       padding: 5px 0px;
   }
@@ -432,7 +434,7 @@ body {
   .square {
     width: 10px;
     height: 10px;
-    border: 1px solid #929292;
+    border: 1px solid #3e3e3e;
     display: inline-block;
     margin-right: 3px;
 }

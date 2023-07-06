@@ -453,12 +453,12 @@ const Table2 = () => {
                 <option value="">Select An Address</option>
                 <option value="On the Right Track Systems, Inc.174 Hudson Street New York, NY
                   – 10013">
-                  On the Right Track Systems, Inc.174 Hudson Street New York, NY
+                  On The Right Track Systems, Inc.174 Hudson Street New York, NY
                   – 10013
                 </option>
                 <option value="On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
                   – 17752">
-                  On the Right Track Systems, Inc.140 Broad StreetMontgomery, PA
+                  On The Right Track Systems, Inc.140 Broad StreetMontgomery, PA
                   – 17752
                 </option>
               </select>
@@ -492,7 +492,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b>street: </b>
+        <b>Street: </b>
         <br />
         <input
           name="po"
@@ -509,7 +509,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b> city:</b>
+        <b>City:</b>
         <br />
         <input
           name="order"
@@ -526,7 +526,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b>state:</b>
+        <b>State:</b>
         <br />
         <input
           name="order"
@@ -543,7 +543,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b>zip:</b>
+        <b>Zip:</b>
         <br />
         <input
           name="order"
@@ -589,7 +589,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b>street: </b>
+        <b>Street: </b>
         <br />
         <input
           name="po"
@@ -606,7 +606,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b> city:</b>
+        <b>City:</b>
         <br />
         <input
           name="order"
@@ -623,7 +623,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b>state:</b>
+        <b>State:</b>
         <br />
         <input
           name="order"
@@ -640,7 +640,7 @@ const Table2 = () => {
         />
       </td>
       <td className="date-div">
-        <b>zip:</b>
+        <b>Zip:</b>
         <br />
         <input
           name="order"
