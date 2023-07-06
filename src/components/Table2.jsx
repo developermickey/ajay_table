@@ -478,9 +478,9 @@ const Table2 = () => {
                 marginBottom: "20px",
                 height: "50px",
                 width: "calc(100% - 0px)",
-                border: "1px solid #452b93",
+                border: "1px solid #3e3e3e",
                 padding: "6px 0px",
-                color: "#452b93"
+                color: "#3e3e3e"
               }}
             >
               <span>Ship From :</span>
