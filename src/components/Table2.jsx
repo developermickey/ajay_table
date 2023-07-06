@@ -806,14 +806,18 @@ const Table2 = () => {
     </div>
     <table className="table-full" cellSpacing="0" cellPadding="0">
         <tbody>
+        <tr>
+      <td className="row-half-100" colSpan="5">
+      <span>TOTAL H/U:</span>
+      </td>
+    </tr>
           <tr>
-            <td className="row-half-20">
-              <span>TOTAL H/U:</span>
+            <td className="ow-half-8">
               <input
                 type="number"
                 style={{
                   marginTop: '13px',
-                  width: 'calc(100% - 83px)',
+                  width: '100px',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
@@ -822,12 +826,12 @@ const Table2 = () => {
                 readOnly
               />
             </td>
-            <td className="row-half-20">
+            <td className="ow-half-8">
               <input
                 type="number"
                 style={{
                   marginTop: '13px',
-                  width: 'calc(100% - 83px)',
+                  width: '100px',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
@@ -836,12 +840,12 @@ const Table2 = () => {
                 readOnly
               />
             </td>
-            <td className="row-half-20">
+            <td className="ow-half-4">
               <input
                 type="number"
                 style={{
                   marginTop: '13px',
-                  width: 'calc(100% - 83px)',
+                  width: '100px',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
@@ -850,6 +854,10 @@ const Table2 = () => {
                 readOnly
               />
             </td>
+            <td className="row-half-20 orange-4" style={{border: "none !important;"}}></td>
+            <td className="row-half-46 orange-4"></td>
+            <td className="row-half-20 orange-4"></td>
+            
           </tr>
         </tbody>
       </table>

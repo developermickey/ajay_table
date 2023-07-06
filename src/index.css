@@ -18,7 +18,7 @@ body {
   .required-service select {
     width: 100%;
     padding: 8px;
-    font-size: 16px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -397,7 +397,7 @@ body {
     width: 100%;
   
     /* Set the font size and padding of the select element */
-    font-size: 16px;
+    font-size: 14px;
     padding: 8px;
   
     /* Set the border of the select element */
