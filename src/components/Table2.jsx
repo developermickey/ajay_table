@@ -146,29 +146,68 @@ const Table2 = () => {
 
 
 
-    const handleInputChange = (event, rowIndex, columnIndex) => {
+    // const handleInputChange = (event, rowIndex, columnIndex) => {
+    //   const value = parseInt(event.target.value, 10);
+    
+    //   const updatedTotalPallets = [...Array(6)].reduce((sum, _, index) => {
+    //     const inputValue = parseInt(document.getElementById(`pallets-${index}`).value, 10);
+    //     return sum + (index === rowIndex ? value : inputValue);
+    //   }, 0);
+    
+    //   const updatedTotalCartons = [...Array(6)].reduce((sum, _, index) => {
+    //     const inputValue = parseInt(document.getElementById(`cartons-${index}`).value, 10);
+    //     return sum + (index === rowIndex ? value : inputValue);
+    //   }, 0);
+    
+    //   const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
+    //     const inputValue = parseInt(document.getElementById(`weight-${index}`).value, 10);
+    //     return sum + (index === rowIndex ? value : inputValue);
+    //   }, 0);
+    
+    //   setTotalPallets(updatedTotalPallets);
+    //   setTotalCartons(updatedTotalCartons);
+    //   setTotalWeight(updatedTotalWeight);
+    // };
+  
+
+
+    const handleInputChange1 = (event, rowIndex, columnIndex) => {
       const value = parseInt(event.target.value, 10);
     
       const updatedTotalPallets = [...Array(6)].reduce((sum, _, index) => {
         const inputValue = parseInt(document.getElementById(`pallets-${index}`).value, 10);
         return sum + (index === rowIndex ? value : inputValue);
-      }, 0);
+      }, 0);  
+      setTotalPallets(updatedTotalPallets);
+  
+    };
+
+    const handleInputChange2 = (event, rowIndex, columnIndex) => {
+      const value = parseInt(event.target.value, 10);
     
       const updatedTotalCartons = [...Array(6)].reduce((sum, _, index) => {
         const inputValue = parseInt(document.getElementById(`cartons-${index}`).value, 10);
         return sum + (index === rowIndex ? value : inputValue);
       }, 0);
+  
+      setTotalCartons(updatedTotalCartons);
+    };
+
+    const handleInputChange3 = (event, rowIndex, columnIndex) => {
+      const value = parseInt(event.target.value, 10);
     
-      const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
+          const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
         const inputValue = parseInt(document.getElementById(`weight-${index}`).value, 10);
         return sum + (index === rowIndex ? value : inputValue);
       }, 0);
-    
-      setTotalPallets(updatedTotalPallets);
-      setTotalCartons(updatedTotalCartons);
+  
       setTotalWeight(updatedTotalWeight);
     };
-  
+
+    const handleInputChange4 = (event, rowIndex, columnIndex) => {
+
+    };
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -757,7 +796,7 @@ const Table2 = () => {
                   className="same-input"
                   defaultValue={0}
                   id={`pallets-${rowIndex}`}
-                  onChange={(e) => handleInputChange(e, rowIndex, 0)}
+                  onChange={(e) => handleInputChange1(e, rowIndex, 0)}
                 />
               </td>
               <td className="row-half-8 blue-border">
@@ -766,7 +805,7 @@ const Table2 = () => {
                   className="same-input"
                   defaultValue={0}
                   id={`cartons-${rowIndex}`}
-                  onChange={(e) => handleInputChange(e, rowIndex, 1)}
+                  onChange={(e) => handleInputChange2(e, rowIndex, 1)}
                 />
               </td>
               <td className="row-half-4 blue-border">
@@ -775,28 +814,28 @@ const Table2 = () => {
                   className="same-input"
                   defaultValue={0}
                   id={`weight-${rowIndex}`}
-                  onChange={(e) => handleInputChange(e, rowIndex, 2)}
+                  onChange={(e) => handleInputChange3(e, rowIndex, 2)}
                 />
               </td>
               <td className="row-half-4 blue-border">
                 <input
                   type="text"
                   className="same-input"
-                  onChange={(e) => handleInputChange(e, rowIndex, 3)}
+                  onChange={(e) => handleInputChange4(e, rowIndex, 3)}
                 />
               </td>
               <td className="row-half-46 blue-border">
                 <input
                   type="text"
                   className="same-input"
-                  onChange={(e) => handleInputChange(e, rowIndex, 4)}
+                  onChange={(e) => handleInputChange4(e, rowIndex, 4)}
                 />
               </td>
               <td className="row-half-10 blue-border">
                 <input
                   type="text"
                   className="same-input"
-                  onChange={(e) => handleInputChange(e, rowIndex, 5)}
+                  onChange={(e) => handleInputChange4(e, rowIndex, 5)}
                 />
               </td>
             </tr>
