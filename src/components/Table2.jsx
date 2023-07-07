@@ -884,9 +884,12 @@ const Table2 = () => {
                 readOnly
               />
               </td>
-              <td className="row-half-50 blue-border" colSpan="3"  style={{verticalAlign: 'middle',}}>
-                <span style={{verticalAlign: 'middle',}}>
-</span>
+              <td className="row-half-4 blue-border">
+              </td>
+              <td className="row-half-46 blue-border">
+              </td>
+
+              <td className="row-half-10 blue-border" >
               </td> 
     </tr>
        
