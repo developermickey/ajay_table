@@ -836,10 +836,58 @@ const Table2 = () => {
               </td>
             </tr>
           ))}
+          <tr>
+      <td className="row-half-8 blue-border">
+      <input
+                type="number"
+                style={{
+                  marginTop: '13px',
+                  width: '134px',
+                  border: '0px',
+                  backgroundColor: '#f1f4ff',
+                  padding: '6px 0px',
+                }}
+                value={totalPallets}
+                readOnly
+              />
+              </td>
+              <td className="row-half-8 blue-border">
+              <input
+                type="number"
+                style={{
+                  marginTop: '13px',
+                  width: '134px',
+                  border: '0px',
+                  backgroundColor: '#f1f4ff',
+                  padding: '6px 0px',
+                }}
+                value={totalCartons}
+                readOnly
+              />
+              </td>
+              <td className="row-half-8 blue-border">
+              <input
+                type="number"
+                style={{
+                  marginTop: '13px',
+                  width: '108px',
+                  border: '0px',
+                  backgroundColor: '#f1f4ff',
+                  padding: '6px 0px',
+                }}
+                value={totalWeight}
+                readOnly
+              />
+              </td>
+              <td className="row-half-8 blue-border" colSpan="3">
+              </td>
+          
+    </tr>
+       
         </tbody>
       </table>
     </div>
-    <table className="table-full" cellSpacing="0" cellPadding="0">
+    {/* <table className="table-full" cellSpacing="0" cellPadding="0">
         <tbody>
         <tr>
       <td className="row-half-8 blue-border">
@@ -885,17 +933,15 @@ const Table2 = () => {
               />
               </td>
               <td className="row-half-4 blue-border">
-              text
               </td>
               <td className="row-half-46 blue-border">
               </td>
-
               <td className="row-half-10 blue-border" >
               </td> 
     </tr>
        
         </tbody>
-      </table>
+      </table> */}
         <table className="table-full" cellSpacing="0" cellPadding="0">
           <tbody>
             <tr>
