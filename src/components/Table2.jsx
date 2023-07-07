@@ -729,61 +729,9 @@ const Table2 = () => {
             </th>
             <th className="row-half-46" style={{ textAlign: 'center', backgroundColor: '#a8b72f' , verticalAlign: 'middle'  }}>
               <span>Description</span>
-              <select
-                style={{ width: '100%' }}
-                onChange={(event) => {
-                  const selectElement = event.target;
-                  const customInput = document.getElementById('custom-input');
-
-                  if (selectElement.value === 'custom') {
-                    if (!customInput) {
-                      const input = document.createElement('input');
-                      input.id = 'custom-input';
-                      input.type = 'text';
-                      input.style.width = '100%';
-                      selectElement.parentNode.appendChild(input);
-                    }
-                  } else {
-                    if (customInput) {
-                      customInput.parentNode.removeChild(customInput);
-                    }
-                  }
-                }}
-              >
-                <option value="">-- Select option --</option>
-                <option value="Disposable Curtains">Disposable Curtains</option>
-                <option value="Hospital Track">Hospital Track</option>
-                <option value="custom">Custom</option>
-              </select>
             </th>
             <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '##a8b72f', verticalAlign: 'middle'  }}>
               <span>Class</span>
-              <select
-                style={{ width: '100%' }}
-                onChange={(event) => {
-                  const selectElement = event.target;
-                  const customInput = document.getElementById('class-custom-input');
-
-                  if (selectElement.value === 'custom') {
-                    if (!customInput) {
-                      const input = document.createElement('input');
-                      input.id = 'class-custom-input';
-                      input.type = 'text';
-                      input.style.width = '100%';
-                      selectElement.parentNode.appendChild(input);
-                    }
-                  } else {
-                    if (customInput) {
-                      customInput.parentNode.removeChild(customInput);
-                    }
-                  }
-                }}
-              >
-                <option value="">-- Select option --</option>
-                <option value="85">85</option>
-                <option value="125">125</option>
-                <option value="custom">Custom</option>
-              </select>
             </th>
           </tr>
         </thead>
@@ -831,18 +779,60 @@ const Table2 = () => {
                 />
               </td>
               <td className="row-half-46 blue-border">
-                <input
-                  type="text"
-                  className="same-input"
-                  onChange={(e) => handleInputChange4(e, rowIndex, 4)}
-                />
+              <select
+                style={{ width: '100%' }}
+                onChange={(event) => {
+                  const selectElement = event.target;
+                  const customInput = document.getElementById('custom-input');
+
+                  if (selectElement.value === 'custom') {
+                    if (!customInput) {
+                      const input = document.createElement('input');
+                      input.id = 'custom-input';
+                      input.type = 'text';
+                      input.style.width = '100%';
+                      selectElement.parentNode.appendChild(input);
+                    }
+                  } else {
+                    if (customInput) {
+                      customInput.parentNode.removeChild(customInput);
+                    }
+                  }
+                }}
+              >
+                <option value="">-- Select option --</option>
+                <option value="Disposable Curtains">Disposable Curtains</option>
+                <option value="Hospital Track">Hospital Track</option>
+                <option value="custom">Custom</option>
+              </select>
               </td>
               <td className="row-half-10 blue-border" >
-                <input
-                  type="text"
-                  className="same-input"
-                  onChange={(e) => handleInputChange4(e, rowIndex, 5)}
-                />
+              <select
+                style={{ width: '100%' }}
+                onChange={(event) => {
+                  const selectElement = event.target;
+                  const customInput = document.getElementById('class-custom-input');
+
+                  if (selectElement.value === 'custom') {
+                    if (!customInput) {
+                      const input = document.createElement('input');
+                      input.id = 'class-custom-input';
+                      input.type = 'text';
+                      input.style.width = '100%';
+                      selectElement.parentNode.appendChild(input);
+                    }
+                  } else {
+                    if (customInput) {
+                      customInput.parentNode.removeChild(customInput);
+                    }
+                  }
+                }}
+              >
+                <option value="">-- Select option --</option>
+                <option value="85">85</option>
+                <option value="125">125</option>
+                <option value="custom">Custom</option>
+              </select>
               </td>
             </tr>
           ))}
