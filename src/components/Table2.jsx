@@ -771,7 +771,7 @@ const Table2 = () => {
                   onChange={(e) => handleInputChange3(e, rowIndex, 2)}
                 />
               </td>
-              <td className="row-half-4 blue-border">
+              <td className="row-half-8 blue-border">
                 <input
                   type="text"
                   className="same-input"
