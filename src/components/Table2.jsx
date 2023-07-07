@@ -715,19 +715,19 @@ const Table2 = () => {
 <table style={{ width: '100%', backgroundColor: '#452b93' }} cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
-            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle' }}>
               <span>Pallets</span>
             </th>
-            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
               <span>Cartons</span>
             </th>
-            <th className="row-half-3" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+            <th className="row-half-3" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
               <span>Weight (lbs.)</span>
             </th>
-            <th className="row-half-4 orange-4" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+            <th className="row-half-4 orange-4" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
               <span>Size (in)</span>
             </th>
-            <th className="row-half-46" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+            <th className="row-half-46" style={{ textAlign: 'center', backgroundColor: '#a8b72f' , verticalAlign: 'middle'  }}>
               <span>Description</span>
               <select
                 style={{ width: '100%' }}
@@ -756,7 +756,7 @@ const Table2 = () => {
                 <option value="custom">Custom</option>
               </select>
             </th>
-            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '#a8b72f' }}>
+            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
               <span>Class</span>
               <select
                 style={{ width: '100%' }}
@@ -848,6 +848,7 @@ const Table2 = () => {
         <tr>
       <td className="row-half-100" colSpan="5">
       <span>TOTAL H/U:</span>
+      
       </td>
     </tr>
           <tr>
