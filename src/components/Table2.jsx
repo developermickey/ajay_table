@@ -895,7 +895,7 @@ const Table2 = () => {
               />
               </td>
               <td className="row-half-50 blue-border" colSpan={3}  style={{verticalAlign: 'middle',}}>
-                <span style={{verticalAlign: 'middle',}}> TOTAL H/U:
+                <span style={{verticalAlign: 'middle',}}> TOTAL H/U: 
 </span>
               </td> 
     </tr>
