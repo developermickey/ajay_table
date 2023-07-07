@@ -800,7 +800,7 @@ const Table2 = () => {
                   }
                 }}
               >
-                <option value="">-- Select option --</option>
+                <option value="">Select</option>
                 <option value="Disposable Curtains">Disposable Curtains</option>
                 <option value="Hospital Track">Hospital Track</option>
                 <option value="custom">Custom</option>
@@ -828,7 +828,7 @@ const Table2 = () => {
                   }
                 }}
               >
-                <option value="">-- Select option --</option>
+                <option value="">Select</option>
                 <option value="85">85</option>
                 <option value="125">125</option>
                 <option value="custom">Custom</option>
@@ -884,8 +884,8 @@ const Table2 = () => {
                 readOnly
               />
               </td>
-              <td className="row-half-50 blue-border" colSpan={3}  style={{verticalAlign: 'middle',}}>
-                <span style={{verticalAlign: 'middle',}}> TOTAL H/U: 
+              <td className="row-half-50 blue-border" colSpan="3"  style={{verticalAlign: 'middle',}}>
+                <span style={{verticalAlign: 'middle',}}>
 </span>
               </td> 
     </tr>
