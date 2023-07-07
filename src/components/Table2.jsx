@@ -46,7 +46,7 @@ const Table2 = () => {
       const capture = document.querySelector('#demoss');
       html2canvas(capture).then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
-        const doc = new jsPDF('p', 'mm', 'a4');
+        const doc = new jsPDF('p', 'in', 'a4');
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
         const canvasAspectRatio = canvas.width / canvas.height;
@@ -715,22 +715,22 @@ const Table2 = () => {
 <table style={{ width: '100%', backgroundColor: '##a8b72f' }} cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
-            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle' }}>
+            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle', paddingTop: '20px', paddingBottom: '20px' }}>
               <span>Pallets</span>
             </th>
-            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
+            <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle', paddingTop: '20px', paddingBottom: '20px'  }}>
               <span>Cartons</span>
             </th>
-            <th className="row-half-3" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
+            <th className="row-half-3" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle', paddingTop: '20px', paddingBottom: '20px'  }}>
               <span>Weight (lbs.)</span>
             </th>
-            <th className="row-half-4 orange-4" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
+            <th className="row-half-4 orange-4" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle', paddingTop: '20px', paddingBottom: '20px'  }}>
               <span>Size (in)</span>
             </th>
-            <th className="row-half-46" style={{ textAlign: 'center', backgroundColor: '#a8b72f' , verticalAlign: 'middle'  }}>
+            <th className="row-half-46" style={{ textAlign: 'center', backgroundColor: '#a8b72f' , verticalAlign: 'middle', paddingTop: '20px', paddingBottom: '20px'  }}>
               <span>Description</span>
             </th>
-            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '##a8b72f', verticalAlign: 'middle'  }}>
+            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '##a8b72f', verticalAlign: 'middle', paddingTop: '20px', paddingBottom: '20px'  }}>
               <span>Class</span>
             </th>
           </tr>
