@@ -307,10 +307,13 @@ body {
       color: #3e3e3e;
       font-weight: 400;
   }
+  th.row-half-10 {
+    background-color: #a8b72f;
+}
   .row-half-8{
       vertical-align: top;
       border: 1px solid #ffffff;
-      width: 8%;
+      width: 0%;
       border-top: 0;
   }
   .row-half-3{

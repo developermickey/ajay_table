@@ -712,7 +712,7 @@ const Table2 = () => {
 
 
 <div>
-<table style={{ width: '100%', backgroundColor: '#452b93' }} cellSpacing="0" cellPadding="0">
+<table style={{ width: '100%', backgroundColor: '##a8b72f' }} cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
             <th className="row-half-8" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle' }}>
@@ -756,7 +756,7 @@ const Table2 = () => {
                 <option value="custom">Custom</option>
               </select>
             </th>
-            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '#a8b72f', verticalAlign: 'middle'  }}>
+            <th className="row-half-10" style={{ textAlign: 'center', backgroundColor: '##a8b72f', verticalAlign: 'middle'  }}>
               <span>Class</span>
               <select
                 style={{ width: '100%' }}
@@ -794,6 +794,8 @@ const Table2 = () => {
                 <input
                   type="text"
                   className="same-input"
+                  style={{
+                  width: '134px'}}
                   defaultValue={0}
                   id={`pallets-${rowIndex}`}
                   onChange={(e) => handleInputChange1(e, rowIndex, 0)}
@@ -803,15 +805,19 @@ const Table2 = () => {
                 <input
                   type="text"
                   className="same-input"
+                  style={{
+                  width: '134px'}}
                   defaultValue={0}
                   id={`cartons-${rowIndex}`}
                   onChange={(e) => handleInputChange2(e, rowIndex, 1)}
                 />
               </td>
-              <td className="row-half-4 blue-border">
+              <td className="row-half-8 blue-border">
                 <input
                   type="text"
                   className="same-input"
+                  style={{
+                  width: '100px'}}
                   defaultValue={0}
                   id={`weight-${rowIndex}`}
                   onChange={(e) => handleInputChange3(e, rowIndex, 2)}
@@ -831,7 +837,7 @@ const Table2 = () => {
                   onChange={(e) => handleInputChange4(e, rowIndex, 4)}
                 />
               </td>
-              <td className="row-half-10 blue-border">
+              <td className="row-half-10 blue-border" >
                 <input
                   type="text"
                   className="same-input"
@@ -846,18 +852,12 @@ const Table2 = () => {
     <table className="table-full" cellSpacing="0" cellPadding="0">
         <tbody>
         <tr>
-      <td className="row-half-100" colSpan="5">
-      <span>TOTAL H/U:</span>
-      
-      </td>
-    </tr>
-          <tr>
-            <td className="ow-half-8">
-              <input
+      <td className="row-half-8 blue-border">
+      <input
                 type="number"
                 style={{
                   marginTop: '13px',
-                  width: '100px',
+                  width: '134px',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
@@ -865,13 +865,13 @@ const Table2 = () => {
                 value={totalPallets}
                 readOnly
               />
-            </td>
-            <td className="ow-half-8">
+              </td>
+              <td className="row-half-8 blue-border">
               <input
                 type="number"
                 style={{
                   marginTop: '13px',
-                  width: '100px',
+                  width: '134px',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
@@ -879,13 +879,13 @@ const Table2 = () => {
                 value={totalCartons}
                 readOnly
               />
-            </td>
-            <td className="ow-half-4">
+              </td>
+              <td className="row-half-8 blue-border">
               <input
                 type="number"
                 style={{
                   marginTop: '13px',
-                  width: '100px',
+                  width: '108px',
                   border: '0px',
                   backgroundColor: '#f1f4ff',
                   padding: '6px 0px',
@@ -893,12 +893,13 @@ const Table2 = () => {
                 value={totalWeight}
                 readOnly
               />
-            </td>
-            <td className="row-half-20 orange-4" style={{border: 'none'}}></td>
-            <td className="row-half-46 orange-4"></td>
-            <td className="row-half-20 orange-4" style={{border: 'none'}}></td>
-            
-          </tr>
+              </td>
+              <td className="row-half-50 blue-border" colSpan={3}  style={{verticalAlign: 'middle',}}>
+                <span style={{verticalAlign: 'middle',}}> TOTAL H/U:
+</span>
+              </td> 
+    </tr>
+       
         </tbody>
       </table>
         <table className="table-full" cellSpacing="0" cellPadding="0">
