@@ -885,6 +885,7 @@ const Table2 = () => {
               />
               </td>
               <td className="row-half-4 blue-border">
+              text
               </td>
               <td className="row-half-46 blue-border">
               </td>
