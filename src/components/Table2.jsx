@@ -96,79 +96,6 @@ const Table2 = () => {
           });
       });
     };
-  
-    // const handleInputChange = (e, rowIndex, columnIndex) => {
-    //   const inputValue = e.target.value !== '' ? parseFloat(e.target.value) : 0;
-    //   const inputNumber = inputValue * 1;
-    
-    //   // Update the total weight
-    //   if (columnIndex === 2) {
-    //     setTotalWeight((prevTotal) => {
-    //       const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
-    //       return prevTotal + diff;
-    //     });
-    //   }
-    //   if (columnIndex === 1) {
-    //     setTotalCartons((prevTotal) => {
-    //       const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
-    //       return prevTotal + diff;
-    //     });
-    //   }
-    //   if (columnIndex === 0) {
-    //     setTotalPallets((prevTotal) => {
-    //       const diff = inputNumber - (parseFloat(e.target.defaultValue) || 0);
-    //       return prevTotal + diff;
-    //     });
-    //   }
-    // };
-    
-
-    // const handleInputChange = (event, rowIndex, columnIndex) => {
-    //   const value = parseInt(event.target.value, 10);
-    //   const updatedTotalPallets = [...Array(6)].reduce((sum, _, index) => {
-    //     const inputValue = parseInt(document.getElementById(`pallets-${index}`).value, 10);
-    //     return sum + (index === rowIndex ? value : inputValue);
-    //   }, 0);
-    //   const updatedTotalCartons = [...Array(6)].reduce((sum, _, index) => {
-    //     const inputValue = parseInt(document.getElementById(`cartons-${index}`).value, 10);
-    //     return sum + (index === rowIndex ? value : inputValue);
-    //   }, 0);
-    //   const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
-    //     const inputValue = parseInt(document.getElementById(`weight-${index}`).value, 10);
-    //     return sum + (index === rowIndex ? value : inputValue);
-    //   }, 0);
-  
-    //   setTotalPallets(updatedTotalPallets);
-    //   setTotalCartons(updatedTotalCartons);
-    //   setTotalWeight(updatedTotalWeight);
-    // };
-
-
-
-
-    // const handleInputChange = (event, rowIndex, columnIndex) => {
-    //   const value = parseInt(event.target.value, 10);
-    
-    //   const updatedTotalPallets = [...Array(6)].reduce((sum, _, index) => {
-    //     const inputValue = parseInt(document.getElementById(`pallets-${index}`).value, 10);
-    //     return sum + (index === rowIndex ? value : inputValue);
-    //   }, 0);
-    
-    //   const updatedTotalCartons = [...Array(6)].reduce((sum, _, index) => {
-    //     const inputValue = parseInt(document.getElementById(`cartons-${index}`).value, 10);
-    //     return sum + (index === rowIndex ? value : inputValue);
-    //   }, 0);
-    
-    //   const updatedTotalWeight = [...Array(6)].reduce((sum, _, index) => {
-    //     const inputValue = parseInt(document.getElementById(`weight-${index}`).value, 10);
-    //     return sum + (index === rowIndex ? value : inputValue);
-    //   }, 0);
-    
-    //   setTotalPallets(updatedTotalPallets);
-    //   setTotalCartons(updatedTotalCartons);
-    //   setTotalWeight(updatedTotalWeight);
-    // };
-  
 
 
     const handleInputChange1 = (event, rowIndex, columnIndex) => {
@@ -483,7 +410,7 @@ const Table2 = () => {
                 color: "#3e3e3e"
               }}
             >
-              <span>Ship From :</span>
+              <span style={{fontSize: "20px"}}>Ship From :</span>
               <br />
               <select style={{ marginTop: "15px", width: "100%" }} value={shipFrom}
                 onChange={event => {
@@ -887,61 +814,6 @@ const Table2 = () => {
         </tbody>
       </table>
     </div>
-    {/* <table className="table-full" cellSpacing="0" cellPadding="0">
-        <tbody>
-        <tr>
-      <td className="row-half-8 blue-border">
-      <input
-                type="number"
-                style={{
-                  marginTop: '13px',
-                  width: '134px',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
-                }}
-                value={totalPallets}
-                readOnly
-              />
-              </td>
-              <td className="row-half-8 blue-border">
-              <input
-                type="number"
-                style={{
-                  marginTop: '13px',
-                  width: '134px',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
-                }}
-                value={totalCartons}
-                readOnly
-              />
-              </td>
-              <td className="row-half-8 blue-border">
-              <input
-                type="number"
-                style={{
-                  marginTop: '13px',
-                  width: '108px',
-                  border: '0px',
-                  backgroundColor: '#f1f4ff',
-                  padding: '6px 0px',
-                }}
-                value={totalWeight}
-                readOnly
-              />
-              </td>
-              <td className="row-half-4 blue-border">
-              </td>
-              <td className="row-half-46 blue-border">
-              </td>
-              <td className="row-half-10 blue-border" >
-              </td> 
-    </tr>
-       
-        </tbody>
-      </table> */}
         <table className="table-full" cellSpacing="0" cellPadding="0">
           <tbody>
             <tr>

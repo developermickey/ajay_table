@@ -18,7 +18,7 @@ body {
   .required-service select {
     width: 100%;
     padding: 8px;
-    font-size: 14px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -42,7 +42,7 @@ body {
   }
   .date-div b {
       display: inline-block;
-      font-size: 14px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 500;
   }
@@ -62,12 +62,12 @@ body {
       padding: 5px;
   }
   .required-service b {
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 500;
       color: #3e3e3e !important;
   }
   .required-service label {
-      font-size: 14px;
+      font-size: 20px;
       font-weight: 500;
       color: #3e3e3e;
   }
@@ -92,7 +92,7 @@ body {
   }
   .width-20 span, .width-30 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -108,7 +108,7 @@ body {
   }
   .width-12 span, .width-8 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -117,7 +117,7 @@ body {
   }
   .row-half-50 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -138,13 +138,13 @@ body {
   }
   .row-half-25 span, .row-half-14 span, .row-half-11 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-50 label {
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -156,7 +156,7 @@ body {
   }
   .row-half-100 span {
       display: inline-block;
-      font-size: 14px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -187,7 +187,7 @@ body {
   }
   .row-half-40 span, .row-half-22 span, .row-half-38 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -218,7 +218,7 @@ body {
   }
   .row-half-16 span, .row-half-12 span, .row-half-13 span, .row-half-9 span, .row-half-41 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -242,7 +242,7 @@ body {
   }
   .freight-charge-left label{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 700;
   }
@@ -259,25 +259,25 @@ body {
   }
   .left-middle-text label{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 700;
   }
   .right-middle-text b{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 700;
   }
   .freight-charge-right span {
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
   .freight-charge-right b {
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 700;
   }
@@ -304,7 +304,7 @@ body {
   }
   .row-half-37 span, .row-half-7 span, .row-half-17 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
@@ -343,7 +343,7 @@ body {
   }
   .row-half-10 span, .row-half-46 span, .row-half-3 span, .row-half-8 span, .row-half-4 span, .row-half-12 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #ffffff;
       font-weight: 400;
   }
@@ -388,13 +388,13 @@ body {
   }
   .row-half-20 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #3e3e3e;
       font-weight: 400;
   }
   .row-half-80 span{
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       color: #ffffff;
       font-weight: 700;
   }
@@ -406,7 +406,7 @@ body {
     width: 100%;
   
     /* Set the font size and padding of the select element */
-    font-size: 14px;
+    font-size: 20px;
     padding: 8px;
   
     /* Set the border of the select element */
@@ -420,7 +420,7 @@ body {
   
   select option {
     /* Set the font size and padding of the option elements */
-    font-size: 16px;
+    font-size: 20px;
     padding: 8px;
   
     /* Set the background color and color of the option elements */
